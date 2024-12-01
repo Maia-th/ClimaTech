@@ -4,7 +4,7 @@ Este projeto está em desenvolvimento ativo. Todas as novas funcionalidades e co
 
 <img alt='Fluxo do GitFlow' src='.github/assets/gitFlow.png'/>
 
-- [Estrutura do Projeto](.github/doc/Geral.md)
+- [Estrutura do Projeto](.github/docs/Geral.md)
 
 ## Requisitos do Ambiente
 
