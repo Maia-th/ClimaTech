@@ -1,5 +1,5 @@
 .h-screen-minus-header {
-  height: 100vh; /* Adjust based on header height */
+  height: 100dvh; /* Adjust based on header height */
 }
 
 .carousel {
