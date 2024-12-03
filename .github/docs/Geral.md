@@ -8,8 +8,6 @@
 
 ### Estrutura de Pastas
 
-Entendi! Vou ajustar a explicação considerando que a pasta `api/` será onde o backend será desenvolvido:
-
 #### 1. **Pasta `assets/`**
 - Armazena arquivos estáticos como imagens, fontes e ícones.
 - Esses arquivos são utilizados em várias partes do projeto.
