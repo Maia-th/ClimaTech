@@ -10,7 +10,8 @@ Este projeto está em desenvolvimento ativo. Todas as novas funcionalidades e co
 
 Para rodar o projeto localmente, certifique-se de ter a seguinte ferramenta instalada:
 
-- ⚠️ Em Breve!
+- Node.js >= 20.18.0
+- Extensão Live Server no VS Code
   
 ## Instalação
 
@@ -21,13 +22,25 @@ git clone https://github.com/Maia-th/ClimaTech.git
 cd ClimaTech
 ```
 
-## Instale as dependências do projeto:
+2. Instale as dependências do projeto:
 
-- ⚠️ Em Breve!
+```bash
+npm install
+```
 
-## Inicie o projeto:
+## Iniciar o Backend
 
-- ⚠️ Em Breve!
+Para iniciar o servidor Express, execute o seguinte comando:
+```bash
+npm start
+```
+
+## Iniciar o Frontend
+
+Para iniciar o frontend com o Live Server:
+
+1. Abra o arquivo `index.html` no VS Code.
+2. Clique com o botão direito no arquivo e selecione "Open with Live Server".
 
 ## Fluxo de Desenvolvimento
 
@@ -65,3 +78,7 @@ git push origin feature/nome-da-feature
 - Todo PR deve ser revisado e aprovado por dois desenvolvedores antes de ser mesclado à branch develop.
 - O código será revisado para verificar a qualidade, adesão às práticas do projeto e testes adequados.
 - Somente após a aprovação dos dois revisores, o PR será aceito e mesclado.
+
+## Bibliotecas
+
+- ⚠️ Em Breve!
