@@ -4,11 +4,11 @@
 
 ### Tecnologias:
 
-<div style="text-align: center;">
-  <img alt="HTML" height=28 src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white" style="margin: 5px;">
-  <img alt="CSS" height=28 src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white" style="margin: 5px;">
-  <img alt="Tailwind" height=28 src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" style="margin: 5px;">
-  <img alt="JavaScript" height=28 src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black" style="margin: 5px;">
+<div align="center">
+  <img alt="HTML" height=38 src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
+  <img alt="CSS" height=38 src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white">
+  <img alt="Tailwind" height=38 src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white">
+  <img alt="JavaScript" height=38 src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
 </div>
 
 ### Estrutura de Pastas
@@ -38,10 +38,10 @@
 
 ### Tecnologias:
 
-<div style="text-align: center;">
-  <img alt="Node.js" height=28 src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" style="margin: 5px;">
-  <img alt="Express" height=28 src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white" style="margin: 5px;">
-  <img alt="MySQL" height=28 src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white" style="margin: 5px;">
+<div align="center">
+  <img alt="Node.js" height=38 src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" margin: 15>
+  <img alt="Express" height=38 src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white">
+  <img alt="MySQL" height=38 src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
 </div>
 
 ### Estrutura de Pastas
@@ -76,6 +76,6 @@
 
 ## Banco de Dados
 
-<div style="text-align: center;">⚠️ Diagrama ER Em Breve!</div>
+<div align="center">⚠️ Diagrama ER Em Breve!</div>
 
 - [Dicionário de Dados](.github/docs/dicionarioBD.md)
