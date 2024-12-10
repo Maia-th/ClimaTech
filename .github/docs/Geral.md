@@ -78,4 +78,4 @@
 
 <div align="center">⚠️ Diagrama ER Em Breve!</div>
 
-- [Dicionário de Dados](.github/docs/dicionarioBD.md)
+- [Dicionário de Dados](./dicionarioBD.md)
