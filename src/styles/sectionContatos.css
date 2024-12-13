@@ -39,13 +39,29 @@
   }
 
   .infoContatosFilho {
-    max-width: 30rem;
     padding: 2rem;
-    margin: 0 auto;
+    margin: 0;
+  }
+
+  .cardMaps {
+    max-width: 100%;
+    justify-content: center;
   }
 
   .divForm {
     margin-top: 2rem;
     right: 0;
+  }
+}
+
+@media (max-width: 420px) {
+  .infoContatosFilho ul li a.Email {
+    word-break: break-all;
+  }
+}
+
+@media (max-width: 366px) {
+  .qtdAvaliacoes {
+    display: none;
   }
 }
