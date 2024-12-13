@@ -5,6 +5,7 @@ Este projeto está em desenvolvimento ativo. Todas as novas funcionalidades e co
 <img alt='Fluxo do GitFlow' src='.github/assets/gitFlow.png'/>
 
 - [Estrutura do Projeto](.github/docs/Geral.md)
+- [Template de Pull Request](.github/docs/pull-request-template.md)
 
 ## Requisitos do Ambiente
 
@@ -62,6 +63,7 @@ Este projeto segue o modelo GitFlow para organização das branches e fluxo de d
 - `develop`: Branch de desenvolvimento com o código que será testado antes de ir para a produção.
 - `feature` branches: Cada nova funcionalidade ou melhoria deve ser desenvolvida em uma branch de feature (feature/nome-da-feature).
 - `hotfix` branches: Correções de bugs urgentes devem ser feitas em branches específicas (hotfix/nome-do-hotfix).
+- `release` branches: Usadas para preparar uma nova versão de produção.
 
 Passos para contribuir com uma nova feature ou correção
 
@@ -98,7 +100,7 @@ git branch -d feature/nome-da-feature
 
 ## Regras para Aprovação de PR
 
-- Todo PR deve ser revisado e aprovado por dois desenvolvedores antes de ser mesclado à branch develop.
+- Todo PR deve ser revisado e aprovado por dois desenvolvedores antes de ser mesclado à branch `develop` ou `main`.
 
 ## Bibliotecas
 
