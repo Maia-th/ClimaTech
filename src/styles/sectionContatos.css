@@ -1,0 +1,67 @@
+.infoContatosPai {
+  height: 26rem;
+}
+
+.infoContatosFilho {
+  max-width: 50rem;
+  margin-left: 10rem;
+}
+
+.divForm {
+  right: 10rem;
+}
+
+@media (max-width: 1279px) {
+  .infoContatosFilho {
+    margin-left: 6rem;
+  }
+
+  .divForm {
+    right: 6rem;
+  }
+}
+
+@media (max-width: 1023px) {
+  .raizContatos {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-bottom: 0;
+  }
+
+  .infoContatosPai,
+  .divForm {
+    width: 100%;
+    max-width: 40rem;
+    position: relative;
+    margin: 0;
+    height: auto;
+  }
+
+  .infoContatosFilho {
+    padding: 2rem;
+    margin: 0;
+  }
+
+  .cardMaps {
+    max-width: 100%;
+    justify-content: center;
+  }
+
+  .divForm {
+    margin-top: 2rem;
+    right: 0;
+  }
+}
+
+@media (max-width: 420px) {
+  .infoContatosFilho ul li a.Email {
+    word-break: break-all;
+  }
+}
+
+@media (max-width: 366px) {
+  .qtdAvaliacoes {
+    display: none;
+  }
+}
