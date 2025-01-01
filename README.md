@@ -5,13 +5,15 @@ Este projeto está em desenvolvimento ativo. Todas as novas funcionalidades e co
 <img alt='Fluxo do GitFlow' src='.github/assets/gitFlow.png'/>
 
 - [Estrutura do Projeto](.github/docs/Geral.md)
+- [Template de Pull Request](.github/docs/pull-request-template.md)
 
 ## Requisitos do Ambiente
 
 Para rodar o projeto localmente, certifique-se de ter a seguinte ferramenta instalada:
 
-- ⚠️ Em Breve!
-  
+- Node.js >= 20.18.0
+- Extensão Live Server no VS Code
+
 ## Instalação
 
 1. Clone o repositório:
@@ -21,13 +23,37 @@ git clone https://github.com/Maia-th/ClimaTech.git
 cd ClimaTech
 ```
 
-## Instale as dependências do projeto:
+2. Instale as dependências do projeto:
+
+```bash
+npm install
+```
+
+## Suba o Banco de Dados
 
 - ⚠️ Em Breve!
 
-## Inicie o projeto:
+## Configure o arquivo .env:
 
-- ⚠️ Em Breve!
+- Copie o arquivo `.env.example` e renomeie para `.env`
+- Defina as variáveis de ambiente como o banco de dados, serviços de cache e outras integrações.
+
+## Iniciar o Backend
+
+Para iniciar o servidor Express, execute o seguinte comando:
+
+```bash
+npm start
+```
+
+Agora a API estará disponível em http://localhost:3000.
+
+## Iniciar o Frontend
+
+Para iniciar o frontend com o Live Server:
+
+1. Abra o arquivo `index.html` no VS Code.
+2. Clique com o botão direito no arquivo e selecione "Open with Live Server".
 
 ## Fluxo de Desenvolvimento
 
@@ -37,14 +63,18 @@ Este projeto segue o modelo GitFlow para organização das branches e fluxo de d
 - `develop`: Branch de desenvolvimento com o código que será testado antes de ir para a produção.
 - `feature` branches: Cada nova funcionalidade ou melhoria deve ser desenvolvida em uma branch de feature (feature/nome-da-feature).
 - `hotfix` branches: Correções de bugs urgentes devem ser feitas em branches específicas (hotfix/nome-do-hotfix).
+- `release` branches: Usadas para preparar uma nova versão de produção.
 
 Passos para contribuir com uma nova feature ou correção
 
 1. Crie uma nova branch a partir de develop:
 
+> Antes de criar a nova branch, execute um `git pull origin develop` para garantir que a sua branch `develop` local esteja atualizada com a versão mais recente do repositório remoto.
+
 ```bash
 git checkout -b feature/nome-da-feature develop
 ```
+
 2. Desenvolva a funcionalidade ou correção de bug.
 
 3. Ao concluir, faça o commit das suas alterações:
@@ -53,15 +83,25 @@ git checkout -b feature/nome-da-feature develop
 git add .
 git commit -m "feat: Descrição da feature ou correção"
 ```
+
 4. Faça o push da branch:
 
 ```bash
 git push origin feature/nome-da-feature
 ```
+
 5. Abra um Pull Request (PR) para a branch develop.
+
+6. Exclua a branch criada após o merge com a branch `develop`:
+
+```bash
+git branch -d feature/nome-da-feature
+```
 
 ## Regras para Aprovação de PR
 
-- Todo PR deve ser revisado e aprovado por dois desenvolvedores antes de ser mesclado à branch develop.
-- O código será revisado para verificar a qualidade, adesão às práticas do projeto e testes adequados.
-- Somente após a aprovação dos dois revisores, o PR será aceito e mesclado.
+- Todo PR deve ser revisado e aprovado por dois desenvolvedores antes de ser mesclado à branch `develop` ou `main`.
+
+## Bibliotecas
+
+- ⚠️ Em Breve!

@@ -4,11 +4,14 @@
 
 ### Tecnologias:
 
-- <img alt="HTML, CSS, Tailwind & Js" width=150 src="https://skillicons.dev/icons?i=html,css,tailwind,js">
+<div align="center">
+  <img alt="HTML" height=38 src="https://img.shields.io/badge/HTML5-E34F26?style=for-the-badge&logo=html5&logoColor=white">
+  <img alt="CSS" height=38 src="https://img.shields.io/badge/CSS3-1572B6?style=for-the-badge&logo=css3&logoColor=white">
+  <img alt="Tailwind" height=38 src="https://img.shields.io/badge/Tailwind_CSS-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white">
+  <img alt="JavaScript" height=38 src="https://img.shields.io/badge/JavaScript-F7DF1E?style=for-the-badge&logo=javascript&logoColor=black">
+</div>
 
 ### Estrutura de Pastas
-
-Entendi! Vou ajustar a explicação considerando que a pasta `api/` será onde o backend será desenvolvido:
 
 #### 1. **Pasta `assets/`**
 - Armazena arquivos estáticos como imagens, fontes e ícones.
@@ -33,8 +36,46 @@ Entendi! Vou ajustar a explicação considerando que a pasta `api/` será onde o
 
 ## Back-End
 
-- ⚠️ Em Breve!
+### Tecnologias:
+
+<div align="center">
+  <img alt="Node.js" height=38 src="https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white" margin: 15>
+  <img alt="Express" height=38 src="https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white">
+  <img alt="MySQL" height=38 src="https://img.shields.io/badge/MySQL-4479A1?style=for-the-badge&logo=mysql&logoColor=white">
+</div>
+
+### Estrutura de Pastas
+
+#### 1. **Pasta `controllers/`**
+- Contém a lógica dos controladores, que manipulam as requisições e respostas.
+- Ex: `userController.js`, `authController.js`.
+
+#### 2. **Pasta `models/`**
+- Contém os modelos de dados, geralmente definidos com Mongoose (para MongoDB) ou Sequelize (para SQL).
+- Ex: `userModel.js`, `productModel.js`.
+
+#### 3. **Pasta `routes/`**
+- Define as rotas da API e associa cada rota ao seu controlador.
+- Ex: `userRoutes.js`, `authRoutes.js`.
+
+#### 4. **Pasta `middlewares/`**
+- Contém middlewares personalizados para manipulação de requisições.
+- Ex: `authMiddleware.js`, `errorHandler.js`.
+
+#### 5. **Pasta `utils/`**
+- Contém funções utilitárias que podem ser reutilizadas em várias partes do projeto.
+- Ex: `logger.js`, `helperFunctions.js`.
+
+#### 6. **Pasta `config/`**
+- Contém arquivos de configuração, como configuração de banco de dados e variáveis de ambiente.
+- Ex: `dbConfig.js`, `appConfig.js`.
+
+#### 7. **Arquivo `index.js`**
+- Ponto de entrada do servidor Express.
+- Configura o servidor e define as rotas principais.
 
 ## Banco de Dados
 
-- ⚠️ Em Breve!
+<div align="center">⚠️ Diagrama ER Em Breve!</div>
+
+- [Dicionário de Dados](./dicionarioBD.md)
