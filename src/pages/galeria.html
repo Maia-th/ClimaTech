@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ClimaTech</title>
+    <link rel="icon" href="../assets/icons/favicon.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="../styles/global.css">
+    <script src="../scripts/mobile.js"></script>
+</head>
+
+<body>
+    <header class="fixed top-0 left-0 w-full z-50">
+        <div class="bg-gray-800 p-4 ">
+            <nav>
+                <div class="hidden container mx-auto md:flex justify-between items-center">
+                    <div class="flex items-center">
+                        <img src="../assets/icons/favicon.png" alt="ClimaTech Logo" class="h-8 w-8 mr-2">
+                        <span class="text-white text-2xl font-semibold">ClimaTech</span>
+                    </div>
+                    <div>
+                        <a href="../../index.html#home"
+                            class="scroll-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
+                        <a href="../../index.html#servicos"
+                            class="scroll-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Serviços</a>
+                        <a href="../../index.html#depoimentos"
+                            class="scroll-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Depoimentos</a>
+                        <a href="../../index.html#contatos"
+                            class="scroll-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Contatos</a>
+                        <a href="#"
+                            class="bg-yellow-500 hover:bg-yellow-400 text-white px-3 py-2 rounded-md text-sm font-medium">Login</a>
+                    </div>
+                </div>
+            </nav>
+            <div class="md:hidden">
+                <div class="container mx-auto flex justify-between items-center">
+                    <div class="flex items-center">
+                        <img src="../assets/icons/favicon.png" alt="ClimaTech Logo" class="h-8 w-8 mr-2">
+                        <span class="text-white text-2xl font-semibold">ClimaTech</span>
+                    </div>
+                    <div>
+                        <button id="menu-button" onclick="showMenu()"
+                            class="text-gray-300 hover:text-white focus:outline-none">
+                            <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 6h16M4 12h16m-7 6h7" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                <nav id="mobile-menu" class="hidden md:hidden mt-2 text-center">
+                    <a href="../../index.html#home" onclick="showMenu()"
+                        class="scroll-link block text-white px-3 py-2 rounded-md text-base font-medium">Home</a>
+                    <a href="../../index.html#servicos" onclick="showMenu()"
+                        class="scroll-link block text-white px-3 py-2 rounded-md text-base font-medium">Serviços</a>
+                    <a href="../../index.html#depoimentos" onclick="showMenu()"
+                        class="scroll-link block text-white px-3 py-2 rounded-md text-base font-medium">Depoimentos</a>
+                    <a href="../../index.html#contatos" onclick="showMenu()"
+                        class="scroll-link block text-white px-3 py-2 rounded-md text-base font-medium">Contatos</a>
+                    <a href="#"
+                        class="block mt-2 bg-yellow-500 text-white px-3 py-2 rounded-md text-base font-medium">Login</a>
+                </nav>
+            </div>
+        </div>
+        </div>
+    </header>
+    <main>
+        <section id="galeria" class="py-24 bg-gray-100">
+            <div class="container mx-auto px-4">
+                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-12">Galeria de Fotos</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                  <div class="col-span-1">
+                    <img src="../assets/images/galeria/foto6.jpg" alt="Foto 1" class="w-full h-auto rounded-lg shadow-lg">
+                  </div>
+                  <div class="col-span-2">
+                    <img src="../assets/images/galeria/foto4.jpg" alt="Foto 2" class="w-full h-auto rounded-lg shadow-lg">
+                  </div>
+                  <div class="col-span-2">
+                    <img src="../assets/images/galeria/foto7.jpg" alt="Foto 3" class="w-full h-auto rounded-lg shadow-lg">
+                  </div>
+                  <div class="col-span-1">
+                    <img src="../assets/images/galeria/foto3.jpg" alt="Foto 4" class="w-full h-auto rounded-lg shadow-lg">
+                  </div>
+                  <div class="col-span-1">
+                    <img src="../assets/images/galeria/foto1.jpg" alt="Foto 5" class="w-full h-auto rounded-lg shadow-lg">
+                  </div>
+                  <div class="col-span-1">
+                    <img src="../assets/images/galeria/foto2.jpg" alt="Foto 6" class="w-full h-auto rounded-lg shadow-lg">
+                  </div>
+                  <div class="col-span-1">
+                    <img src="../assets/images/galeria/foto5.jpg" alt="Foto 7" class="w-full h-auto rounded-lg shadow-lg">
+                  </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="bg-gray-800 text-white py-10">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8 text-center md:text-left">
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">S&G Climatização e Refrigeração</h3>
+                    <p class="text-sm">Razão Social: S&G Climatização e Refrigeração Ltda.</p>
+                    <p class="text-sm">CNPJ: 40.684.447/0001-41</p>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Horário de Funcionamento</h3>
+                    <p class="text-sm">Segunda a Sexta: 08:00 - 18:00</p>
+                    <p class="text-sm">Sábado e Domingo: Fechado</p>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-lg font-semibold mb-2">Links Úteis</h3>
+                        <ul class="text-sm space-y-2">
+                            <li><a href="src/pages/sobre.html" class="hover:text-yellow-500">Sobre Nós</a></li>
+                            <li><a href="galeria.html" class="hover:text-yellow-500">Galeria de Fotos</a></li>
+
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold mb-2 ">Siga-nos</h3>
+                        <div class="flex justify-center md:justify-start space-x-4">
+                            <a href="#" class="hover:text-yellow-500"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="hover:text-yellow-500"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="hover:text-yellow-500"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-semibold mb-2">Inscreva-se e receba nossas promoções!</h3>
+                    <form class="flex items-center">
+                        <div class="relative w-full">
+                            <input type="email" placeholder="Digite seu e-mail"
+                                class="w-full p-2 pr-10 rounded-lg text-gray-900">
+                            <button type="submit" class="absolute right-0 top-0 mt-2 mr-2 text-gray-900">
+                                <i class="fas fa-paper-plane text-yellow-500"></i>
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+            <div class="mt-8">
+                <h3 class="text-lg font-semibold mb-2">Endereço</h3>
+                <iframe class="rounded-lg shadow-lg w-full h-80"
+                    src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15028.903584045032!2d-43.2322488!3d-19.6603657!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0xa5a18fd0f896b3%3A0xf58bc56cdab64d88!2sClimatech%20Climatiza%C3%A7ao%20e%20Refrigera%C3%A7%C3%A3o%20Comercial!5e0!3m2!1spt-BR!2sbr!4v1735748484989!5m2!1spt-BR!2sbr"
+                    style="border:0;" allowfullscreen="" loading="lazy"
+                    referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
+            <div class="mt-8 text-sm md:text-base text-center">
+                <p>S&G Climatização e Refrigeração © 2025. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+
+</html>
