@@ -25,12 +25,9 @@
                     <div>
                         <a href="#home"
                             class="scroll-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
-                        <a href="#sobre-nos"
-                            class="scroll-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Sobre
-                            Nós</a>
                         <a href="#servicos"
                             class="scroll-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Serviços</a>
-                        <a href="#depoimentos"
+                            <a href="#depoimentos"
                             class="scroll-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Depoimentos</a>
                         <a href="#contatos"
                             class="scroll-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Contatos</a>
@@ -57,12 +54,7 @@
                     </div>
                 </div>
                 <nav id="mobile-menu" class="hidden md:hidden mt-2 text-center">
-                    <a href="#home" onclick="showMenu()"
-                        class="scroll-link block text-white px-3 py-2 rounded-md text-base font-medium">Home</a>
-                    <a href="#sobre-nos" onclick="showMenu()"
-                        class="scroll-link block text-white px-3 py-2 rounded-md text-base font-medium">Sobre
-                        Nós</a>
-                    <a href="#servicos" onclick="showMenu()"
+                    <a href="#home" onclick="showMenu()" <a href="#servicos" onclick="showMenu()"
                         class="scroll-link block text-white px-3 py-2 rounded-md text-base font-medium">Serviços</a>
                     <a href="#depoimentos" onclick="showMenu()"
                         class="scroll-link block text-white px-3 py-2 rounded-md text-base font-medium">Depoimentos</a>
@@ -76,7 +68,7 @@
         </div>
     </header>
     <main>
-        <section id="home" class="relative w-full h-screen-minus-header pt-16 flex items-center justify-center">
+        <section id="home" class="relative w-full h-screen-minus-header bg-gray-200 pt-16 flex items-center justify-center">
             <div class="carousel w-full h-full m-8 md:m-16 md:h-4/5 rounded-lg">
                 <div class="carousel-inner">
                     <div class="carousel-item active">
@@ -100,62 +92,41 @@
                     ambiente com conforto e eficiência</p>
             </div>
         </section>
-        <section id="sobre-nos" class="py-24 bg-gray-900 text-white">
-            <div class="container mx-auto px-4">
-                <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-12">Quem Somos</h2>
-                <div class="bg-gray-800 shadow-xl rounded-lg p-6 md:p-10">
-                    <p class="text-base md:text-lg leading-relaxed mb-6">
-                        Sou Gabriel Gonçalves, tenho 34 anos, casado, sem filhos. Possuo formação em elétrica, Técnico
-                        em Eletroeletrônica, Técnico em Refrigeração e Climatização, sou graduado em Processos
-                        Gerenciais e pós-graduado em Gestão Estratégica. Tenho 14 anos de experiência em climatização e
-                        já atuei como operador de campo, líder operacional, supervisor operacional e, por último, como
-                        Gerente Operacional em uma multinacional, sendo responsável por sistemas de climatização de
-                        subestações. Há 3 anos fundei a ClimaTech para oferecer serviços de qualidade à população de
-                        Itabira e região, suprindo a escassez de mão de obra qualificada.
-                    </p>
-                    <h3 class="text-2xl md:text-3xl font-semibold mt-10 mb-6">Nossa Missão</h3>
-                    <p class="text-base md:text-lg leading-relaxed mb-6">
-                        Oferecer serviços e soluções em climatização, cumprindo a legislação vigente e adotando práticas
-                        sustentáveis, sempre com foco na satisfação de nossos clientes.
-                    </p>
-                    <h3 class="text-2xl md:text-3xl font-semibold mt-10 mb-6">Nossa Visão</h3>
-                    <p class="text-base md:text-lg leading-relaxed mb-6">
-                        Ser referência em nossa cidade na prestação de serviços de climatização de alta qualidade.
-                    </p>
-                    <h3 class="text-2xl md:text-3xl font-semibold mt-10 mb-6">Nossos Valores</h3>
-                    <p class="text-base md:text-lg leading-relaxed">
-                        Integridade nos negócios, ética e transparência com nossos clientes.
-                    </p>
-                </div>
-            </div>
-        </section>
         <section id="servicos" class="py-24 bg-white">
             <div class="container mx-auto px-4">
                 <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-12">Serviços</h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
                     <div class="bg-gray-800 text-white p-6 rounded-lg shadow-lg cursor-pointer grid grid-cols-1 items-center"
                         onclick="openModal('modal1')">
-                        <img src="src/assets/images/servico1.jpg" alt="Instalação de ar-condicionado" class="w-full h-48 object-cover rounded-lg mb-4">
+                        <img src="src/assets/images/servico1.jpg" alt="Instalação de ar-condicionado"
+                            class="w-full h-48 object-cover rounded-lg mb-4">
                         <h3 class="text-2xl font-semibold text-center">Instalação de ar-condicionado</h3>
-                        <button class="mt-4 bg-yellow-500 px-3 py-1 rounded-lg shadow-lg font-medium">Detalhes ➙</button>
+                        <button class="mt-4 bg-yellow-500 px-3 py-1 rounded-lg shadow-lg font-medium">Detalhes
+                            ➙</button>
                     </div>
                     <div class="bg-gray-800 text-white p-6 rounded-lg shadow-lg cursor-pointer grid grid-cols-1 items-center"
                         onclick="openModal('modal2')">
-                        <img src="src/assets/images/servico2.png" alt="Manutenção Corretiva" class="w-full h-48 object-cover rounded-lg mb-4">
+                        <img src="src/assets/images/servico2.png" alt="Manutenção Corretiva"
+                            class="w-full h-48 object-cover rounded-lg mb-4">
                         <h3 class="text-2xl font-semibold text-center">Manutenção Corretiva</h3>
-                        <button class="mt-4 bg-yellow-500 px-3 py-1 rounded-lg shadow-lg font-medium">Detalhes ➙</button>
+                        <button class="mt-4 bg-yellow-500 px-3 py-1 rounded-lg shadow-lg font-medium">Detalhes
+                            ➙</button>
                     </div>
                     <div class="bg-gray-800 text-white p-6 rounded-lg shadow-lg cursor-pointer grid grid-cols-1 items-center"
                         onclick="openModal('modal3')">
-                        <img src="src/assets/images/servico3.webp" alt="Consultoria Técnica" class="w-full h-48 object-cover rounded-lg mb-4">
+                        <img src="src/assets/images/servico3.webp" alt="Consultoria Técnica"
+                            class="w-full h-48 object-cover rounded-lg mb-4">
                         <h3 class="text-2xl font-semibold text-center">Consultoria Técnica</h3>
-                        <button class="mt-4 bg-yellow-500 px-3 py-1 rounded-lg shadow-lg font-medium">Detalhes ➙</button>
+                        <button class="mt-4 bg-yellow-500 px-3 py-1 rounded-lg shadow-lg font-medium">Detalhes
+                            ➙</button>
                     </div>
                     <div class="bg-gray-800 text-white p-6 rounded-lg shadow-lg cursor-pointer grid grid-cols-1 items-center"
                         onclick="openModal('modal4')">
-                        <img src="src/assets/images/servico4.webp" alt="PMOC" class="w-full h-48 object-cover rounded-lg mb-4">
+                        <img src="src/assets/images/servico4.webp" alt="PMOC"
+                            class="w-full h-48 object-cover rounded-lg mb-4">
                         <h3 class="text-2xl font-semibold text-center">PMOC</h3>
-                        <button class="mt-4 bg-yellow-500 px-3 py-1 rounded-lg shadow-lg font-medium">Detalhes ➙</button>
+                        <button class="mt-4 bg-yellow-500 px-3 py-1 rounded-lg shadow-lg font-medium">Detalhes
+                            ➙</button>
                     </div>
                 </div>
             </div>
