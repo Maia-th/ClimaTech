@@ -30,9 +30,9 @@
 
 .close {
   position: absolute;
-  z-index: 10;;
-  top: 20px;
-  right: 25px;
+  z-index: 10;
+  top: 0;
+  right: 15px;
   color: red;
   
   font-size: 35px;
