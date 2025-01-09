@@ -7,9 +7,18 @@
   <title>ClimaTech</title>
   <link rel="icon" href="../assets/icons/favicon.png" type="image/x-icon">
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="stylesheet" href="../styles/global.css">
+  <link rel="stylesheet" href="../styles/galeria.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      AOS.init();
+    });
+  </script>
   <script src="../scripts/mobile.js"></script>
+  <script src="../scripts/modalGaleria.js" defer></script>
 </head>
 
 <body>
@@ -23,15 +32,18 @@
           </div>
           <div>
             <a href="../../index.html#home"
-              class="scroll-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Home</a>
+              class="scroll-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-base font-medium">Home</a>
             <a href="../../index.html#servicos"
-              class="scroll-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Serviços</a>
+              class="scroll-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-base font-medium">Serviços</a>
+            <a href="#galeria"
+              class="scroll-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-base font-medium">Galeria</a>
             <a href="../../index.html#depoimentos"
-              class="scroll-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Depoimentos</a>
+              class="scroll-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-base font-medium">Depoimentos</a>
+            <a href="./sobre.html#sobre-nos"
+              class="scroll-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-base font-medium">Sobre</a>
             <a href="../../index.html#contatos"
-              class="scroll-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">Contatos</a>
-            <a href="#"
-              class="bg-yellow-500 hover:bg-yellow-400 text-white px-3 py-2 rounded-md text-sm font-medium">Login</a>
+              class="scroll-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-base font-medium">Contatos</a>
+            <a href="#" class="bg-yellow-500 text-white px-3 py-2 rounded-md text-base font-medium">Login</a>
           </div>
         </div>
       </nav>
@@ -55,8 +67,12 @@
             class="scroll-link block text-white px-3 py-2 rounded-md text-base font-medium">Home</a>
           <a href="../../index.html#servicos" onclick="showMenu()"
             class="scroll-link block text-white px-3 py-2 rounded-md text-base font-medium">Serviços</a>
+          <a href="#galeria" onclick="showMenu()"
+            class="scroll-link block text-white px-3 py-2 rounded-md text-base font-medium">Galeria</a>
           <a href="../../index.html#depoimentos" onclick="showMenu()"
             class="scroll-link block text-white px-3 py-2 rounded-md text-base font-medium">Depoimentos</a>
+          <a href="./sobre.html#sobre-nos" onclick="showMenu()"
+            class="scroll-link block text-white px-3 py-2 rounded-md text-base font-medium">Sobre</a>
           <a href="../../index.html#contatos" onclick="showMenu()"
             class="scroll-link block text-white px-3 py-2 rounded-md text-base font-medium">Contatos</a>
           <a href="#" class="block mt-2 bg-yellow-500 text-white px-3 py-2 rounded-md text-base font-medium">Login</a>
@@ -68,93 +84,157 @@
   <main>
     <section id="galeria" class="pt-28 pb-12 bg-gray-100">
       <div class="container mx-auto px-4">
-        <h2 class="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-12">Galeria de Fotos</h2>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 pb-8">
-          <div class="col-span-1">
-            <img src="../assets/images/galeria/foto6.jpg" alt="Foto 1" class="w-full h-auto rounded-lg shadow-lg transform transition duration-500 hover:scale-105">
+        <h2 class="text-4xl font-bold text-center mb-8">Galeria de Fotos</h2>
+        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+          <div
+            class="relative col-span-1 sm:col-span-2 md:col-span-3 lg:col-span-3 row-span-2 overflow-hidden rounded-lg shadow-lg"
+            data-aos="fade-up">
+            <img src="../assets/images/galeria/foto12.jpg" alt="Foto 1"
+              class="w-full h-full object-cover transform transition duration-500 hover:scale-105 cursor-pointer"
+              onclick="openModal(0)">
           </div>
-          <div class="col-span-1">
-            <img src="../assets/images/galeria/foto5.jpg" alt="Foto 7" class="w-full h-auto rounded-lg shadow-lg transform transition duration-500 hover:scale-105">
+          <div
+            class="relative col-span-1 sm:col-span-1 md:col-span-1 lg:col-span-1 row-span-1 overflow-hidden rounded-lg shadow-lg"
+            data-aos="fade-up" data-aos-delay="100">
+            <img src="../assets/images/galeria/foto3.jpg" alt="Foto 7"
+              class="w-full h-full object-cover transform transition duration-500 hover:scale-105 cursor-pointer"
+              onclick="openModal(1)">
           </div>
-          <div class="col-span-1 sm:col-span-2 md:col-span-3 lg:col-span-2">
-            <img src="../assets/images/galeria/foto4.jpg" alt="Foto 2" class="w-full h-auto rounded-lg shadow-lg transform transition duration-500 hover:scale-105">
+          <div
+            class="relative col-span-1 sm:col-span-1 md:col-span-1 lg:col-span-2 row-span-2 overflow-hidden rounded-lg shadow-lg"
+            data-aos="fade-up" data-aos-delay="200">
+            <img src="../assets/images/galeria/foto6.jpg" alt="Foto 2"
+              class="w-full h-full object-cover transform transition duration-500 hover:scale-105 cursor-pointer"
+              onclick="openModal(2)">
           </div>
-          <div class="col-span-1 sm:col-span-2 md:col-span-3 lg:col-span-2">
-            <img src="../assets/images/galeria/foto7.jpg" alt="Foto 3" class="w-full h-auto rounded-lg shadow-lg transform transition duration-500 hover:scale-105">
+          <div
+            class="relative col-span-1 sm:col-span-1 md:col-span-1 lg:col-span-1 row-span-1 overflow-hidden rounded-lg shadow-lg"
+            data-aos="fade-up" data-aos-delay="300">
+            <img src="../assets/images/galeria/foto8.jpg" alt="Foto 3"
+              class="w-full h-full object-cover transform transition duration-500 hover:scale-105 cursor-pointer"
+              onclick="openModal(3)">
           </div>
-          <div class="col-span-1">
-            <img src="../assets/images/galeria/foto3.jpg" alt="Foto 4" class="w-full h-auto rounded-lg shadow-lg transform transition duration-500 hover:scale-105">
+          <div
+            class="relative col-span-1 sm:col-span-1 md:col-span-1 lg:col-span-1 row-span-1 overflow-hidden rounded-lg shadow-lg"
+            data-aos="fade-up" data-aos-delay="400">
+            <img src="../assets/images/galeria/foto5.jpg" alt="Foto 4"
+              class="w-full h-full object-cover transform transition duration-500 hover:scale-105 cursor-pointer"
+              onclick="openModal(4)">
           </div>
-          <div class="col-span-1">
-            <img src="../assets/images/galeria/foto2.jpg" alt="Foto 6" class="w-full h-auto rounded-lg shadow-lg transform transition duration-500 hover:scale-105">
+          <div
+            class="relative col-span-1 sm:col-span-1 md:col-span-1 lg:col-span-1 row-span-1 overflow-hidden rounded-lg shadow-lg"
+            data-aos="fade-up" data-aos-delay="500">
+            <img src="../assets/images/galeria/foto2.jpg" alt="Foto 6"
+              class="w-full h-full object-cover transform transition duration-500 hover:scale-105 cursor-pointer"
+              onclick="openModal(5)">
           </div>
-          <div class="col-span-1">
-            <img src="../assets/images/galeria/foto9.jpg" alt="Foto 5" class="w-full h-auto rounded-lg shadow-lg transform transition duration-500 hover:scale-105">
+          <div
+            class="relative col-span-1 sm:col-span-1 md:col-span-1 lg:col-span-2 row-span-1 overflow-hidden rounded-lg shadow-lg"
+            data-aos="fade-up" data-aos-delay="600">
+            <img src="../assets/images/galeria/foto9.jpg" alt="Foto 5"
+              class="w-full h-full object-cover transform transition duration-500 hover:scale-105 cursor-pointer"
+              onclick="openModal(6)">
           </div>
-          <div class="col-span-1">
-            <img src="../assets/images/galeria/foto8.jpg" alt="Foto 9" class="w-full h-auto rounded-lg shadow-lg transform transition duration-500 hover:scale-105">
+          <div
+            class="relative col-span-1 sm:col-span-1 md:col-span-1 lg:col-span-1 row-span-2 overflow-hidden rounded-lg shadow-lg"
+            data-aos="fade-up" data-aos-delay="700">
+            <img src="../assets/images/galeria/foto7.jpg" alt="Foto 9"
+              class="w-full h-full object-cover transform transition duration-500 hover:scale-105 cursor-pointer"
+              onclick="openModal(7)">
           </div>
-          <div class="col-span-1">
-            <img src="../assets/images/galeria/foto1.jpg" alt="Foto 8" class="w-full h-auto rounded-lg shadow-lg transform transition duration-500 hover:scale-105">
+          <div
+            class="relative col-span-1 sm:col-span-1 md:col-span-1 lg:col-span-1 row-span-1 overflow-hidden rounded-lg shadow-lg"
+            data-aos="fade-up" data-aos-delay="800">
+            <img src="../assets/images/galeria/foto1.jpg" alt="Foto 8"
+              class="w-full h-full object-cover transform transition duration-500 hover:scale-105 cursor-pointer"
+              onclick="openModal(8)">
           </div>
-          <div class="col-span-1">
-            <img src="../assets/images/galeria/foto10.jpg" alt="Foto 10" class="w-full h-auto rounded-lg shadow-lg transform transition duration-500 hover:scale-105">
+          <div
+            class="relative col-span-1 sm:col-span-2 md:col-span-2 lg:col-span-2 row-span-2 overflow-hidden rounded-lg shadow-lg"
+            data-aos="fade-up" data-aos-delay="900">
+            <img src="../assets/images/galeria/foto4.jpg" alt="Foto 10"
+              class="w-full h-full object-cover transform transition duration-500 hover:scale-105 cursor-pointer"
+              onclick="openModal(9)">
+          </div>
+          <div
+            class="relative col-span-1 sm:col-span-1 md:col-span-1 lg:col-span-1 row-span-1 overflow-hidden rounded-lg shadow-lg"
+            data-aos="fade-up" data-aos-delay="1000">
+            <img src="../assets/images/galeria/foto11.jpg" alt="Foto 11"
+              class="w-full h-full object-cover transform transition duration-500 hover:scale-105 cursor-pointer"
+              onclick="openModal(10)">
+          </div>
+          <div
+            class="relative col-span-1 sm:col-span-1 md:col-span-1 lg:col-span-1 row-span-1 overflow-hidden rounded-lg shadow-lg"
+            data-aos="fade-up" data-aos-delay="1100">
+            <img src="../assets/images/galeria/foto10.jpg" alt="Foto 12"
+              class="w-full h-full object-cover transform transition duration-500 hover:scale-105 cursor-pointer"
+              onclick="openModal(11)">
           </div>
         </div>
       </div>
     </section>
+    <!-- Modal -->
+    <div id="myModal" class="modal">
+
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <img id="modalImage" src="" alt="Imagem ampliada">
+        <a class="prev" onclick="changeSlide(-1)">&#10094;</a>
+        <a class="next" onclick="changeSlide(1)">&#10095;</a>
+      </div>
+    </div>
   </main>
   <footer class="bg-gray-800 text-white py-10">
     <div class="container mx-auto px-4">
-        <div class="grid grid-cols-1 gap-y-8 md:grid-cols-4 lg:gap-x-8 md:items-center lg:items-start text-center md:text-left">
-            <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-8 md:col-span-2">
-            <div>
-                <h3 class="text-lg font-semibold mb-2">S&G Climatização e Refrigeração</h3>
-                <p class="text-sm">Razão Social: S&G Climatização e Refrigeração Ltda.</p>
-                <p class="text-sm">CNPJ: 40.684.447/0001-41</p>
-            </div>
-            <div>
-                <h3 class="text-lg font-semibold mb-2">Horário de Funcionamento</h3>
-                <p class="text-sm">Segunda a Sexta: 08:00 - 18:00</p>
-                <p class="text-sm">Sábado e Domingo: Fechado</p>
-            </div>
+      <div
+        class="grid grid-cols-1 gap-y-8 md:grid-cols-4 lg:gap-x-8 md:items-center lg:items-start text-center md:text-left">
+        <div class="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 gap-8 md:col-span-2">
+          <div>
+            <h3 class="text-lg font-semibold mb-2">S&G Climatização e Refrigeração</h3>
+            <p class="text-sm">Razão Social: S&G Climatização e Refrigeração Ltda.</p>
+            <p class="text-sm">CNPJ: 40.684.447/0001-41</p>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-2">Horário de Funcionamento</h3>
+            <p class="text-sm">Segunda a Sexta: 08:00 - 18:00</p>
+            <p class="text-sm">Sábado e Domingo: Fechado</p>
+          </div>
         </div>
-            <div class="grid grid-cols-1 col-span-2 lg:grid-cols-2 md:col-span-1 gap-8">
-                <div>
-                    <h3 class="text-lg font-semibold mb-2">Links Úteis</h3>
-                    <ul class="text-sm space-y-2">
-                        <li><a href="./sobre.html" class="hover:text-yellow-500">Sobre Nós</a></li>
-                        <li><a href="#galeria" class="hover:text-yellow-500">Galeria de Fotos</a></li>
+        <div class="grid grid-cols-1 col-span-2 lg:grid-cols-2 md:col-span-1 gap-8">
+          <div>
+            <h3 class="text-lg font-semibold mb-2">Links Úteis</h3>
+            <ul class="text-sm space-y-2">
+              <li><a href="./sobre.html" class="hover:text-yellow-500">Sobre Nós</a></li>
+              <li><a href="#galeria" class="hover:text-yellow-500">Galeria de Fotos</a></li>
 
-                    </ul>
-                </div>
-                <div>
-                    <h3 class="text-lg font-semibold mb-2 ">Siga-nos</h3>
-                    <div class="flex justify-center md:justify-start space-x-4">
-                        <a href="#" class="hover:text-yellow-500"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="hover:text-yellow-500"><i class="fab fa-instagram"></i></a>
-                        <a href="#" class="hover:text-yellow-500"><i class="fab fa-linkedin-in"></i></a>
-                    </div>
-                </div>
+            </ul>
+          </div>
+          <div>
+            <h3 class="text-lg font-semibold mb-2 ">Siga-nos</h3>
+            <div class="flex justify-center md:justify-start space-x-4">
+              <a href="#" class="hover:text-yellow-500"><i class="fab fa-facebook-f"></i></a>
+              <a href="#" class="hover:text-yellow-500"><i class="fab fa-instagram"></i></a>
+              <a href="#" class="hover:text-yellow-500"><i class="fab fa-linkedin-in"></i></a>
             </div>
-            <div class="text-center md:text-left">
-                <h3 class="text-lg font-semibold mb-2">Inscreva-se e receba nossas promoções!</h3>
-                <form class="flex items-center mx-auto" style="max-width: 18rem;">
-                    <div class="relative w-full mx-auto">
-                        <input type="email" placeholder="Digite seu e-mail"
-                            class="w-full p-2 pr-10 rounded-lg text-gray-900">
-                        <button type="submit" class="absolute right-0 top-0 mt-2 mr-2 text-gray-900">
-                            <i class="fas fa-paper-plane text-yellow-500"></i>
-                        </button>
-                    </div>
-                </form>
+          </div>
+        </div>
+        <div class="text-center md:text-left">
+          <h3 class="text-lg font-semibold mb-2">Inscreva-se e receba nossas promoções!</h3>
+          <form class="flex items-center mx-auto" style="max-width: 18rem;">
+            <div class="relative w-full mx-auto">
+              <input type="email" placeholder="Digite seu e-mail" class="w-full p-2 pr-10 rounded-lg text-gray-900">
+              <button type="submit" class="absolute right-0 top-0 mt-2 mr-2 text-gray-900">
+                <i class="fas fa-paper-plane text-yellow-500"></i>
+              </button>
             </div>
+          </form>
         </div>
-        <div class="mt-8 text-sm md:text-base text-center">
-            <p>S&G Climatização e Refrigeração © 2025. Todos os direitos reservados.</p>
-        </div>
+      </div>
+      <div class="mt-8 text-sm md:text-base text-center">
+        <p>S&G Climatização e Refrigeração © 2025. Todos os direitos reservados.</p>
+      </div>
     </div>
-</footer>
+  </footer>
 </body>
 
 </html>

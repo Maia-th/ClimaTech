@@ -3,12 +3,22 @@
 }
 
 .infoContatosFilho {
-  max-width: 50rem;
-  margin-left: 10rem;
+  max-width: 25rem;
+  margin-left: 7.2rem;
 }
 
 .divForm {
-  right: 10rem;
+  right: 13.6rem;
+}
+
+@media (max-width: 1535px) {
+  .infoContatosFilho {
+    margin-left: 10rem;
+  }
+
+  .divForm {
+    right: 10rem;
+  }
 }
 
 @media (max-width: 1279px) {
@@ -39,13 +49,12 @@
   }
 
   .infoContatosFilho {
+    border-radius: 0.5rem;
+    background-color: #1f2937;
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    max-width: 50rem;
     padding: 2rem;
     margin: 0;
-  }
-
-  .cardMaps {
-    max-width: 100%;
-    justify-content: center;
   }
 
   .divForm {
