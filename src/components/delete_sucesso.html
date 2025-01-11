@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sucesso</title>
+  <style>
+    /* Reset básico */
+    body, html {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    /* Estilo do modal */
+    .modal {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    /* Quando o modal é mostrado */
+    .modal.show {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    /* Conteúdo do modal */
+    .modal-content {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 20px 30px;
+        text-align: center;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        position: relative;
+        max-width: 400px;
+        width: 90%;
+    }
+
+    /* Ícone do modal */
+    .icon {
+        font-size: 2rem;
+        color: #333; /* Cor do ícone */
+        margin-bottom: 10px;
+        border: 2px solid #f0a202;
+        border-radius: 50%;
+        padding: 5px;
+        display: inline-block;
+    }
+
+    /* Estilo do texto dentro do modal */
+    .modal-content p {
+        font-size: 1rem;
+        font-weight: bold;
+        color: #333;
+        margin: 0;
+    }
+
+    /* Linha verde abaixo do modal */
+    .modal-content::after {
+        content: "";
+        display: block;
+        height: 4px;
+        width: 100%;
+        background-color: #008000; /* Linha verde */
+        margin-top: 10px;
+        border-radius: 0 0 5px 5px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Modal -->
+  <div id="modal" class="modal">
+    <div class="modal-content">
+      <div class="icon">&#10004;</div> <!-- Ícone de sucesso -->
+      <h2>Exclusão realizada com sucesso!</h2>
+      <button class="modal-button" onclick="closeModal()">Fechar</button>
+    </div>
+  </div>
+
+  <script>
+    // Espera o carregamento do conteúdo para executar o código
+    document.addEventListener("DOMContentLoaded", () => {
+        const modal = document.getElementById("modal");
+
+        // Mostrar o modal automaticamente
+        setTimeout(() => {
+            modal.classList.add("show");
+
+            // Fechar o modal após 3 segundos
+            setTimeout(() => {
+                modal.classList.remove("show");
+            }, 3000);
+        }, 500);
+    });
+
+    // Função para fechar o modal
+    function closeModal() {
+        document.getElementById("modal").classList.remove("show");
+    }
+  </script>
+</body>
+</html>

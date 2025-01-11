@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Falha</title>
+  <style>
+    /* Reset básico */
+    body, html {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial, sans-serif;
+    }
+
+    /* Estilo do modal */
+    .modal {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1000;
+        opacity: 0;
+        visibility: hidden;
+        transition: opacity 0.3s ease, visibility 0.3s ease;
+    }
+
+    /* Quando o modal é mostrado */
+    .modal.show {
+        opacity: 1;
+        visibility: visible;
+    }
+
+    /* Conteúdo do modal */
+    .modal-content {
+        background-color: #fff;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        padding: 20px 30px;
+        text-align: center;
+        box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        position: relative;
+        max-width: 400px;
+        width: 90%;
+    }
+
+    /* Ícone de erro */
+    .icon-error {
+        font-size: 2rem;
+        color: #ff0000; /* Cor vermelha para o ícone */
+        margin-bottom: 10px;
+        border: 2px solid #ff0000;
+        border-radius: 50%;
+        padding: 5px;
+        display: inline-block;
+    }
+
+    /* Estilo do texto dentro do modal */
+    .modal-content p {
+        font-size: 1rem;
+        font-weight: bold;
+        color: #333;
+        margin: 0;
+    }
+
+    /* Linha vermelha abaixo do modal */
+    .modal-content.error::after {
+        content: "";
+        display: block;
+        height: 4px;
+        width: 100%;
+        background-color: #ff0000; /* Linha vermelha */
+        margin-top: 10px;
+        border-radius: 0 0 5px 5px;
+    }
+  </style>
+</head>
+<body>
+  <!-- Modal de erro -->
+  <div id="modal" class="modal">
+    <div class="modal-content error">
+      <div class="icon-error">&#10060;</div> <!-- Ícone de erro -->
+      <h2>Erro ao excluir. Tente novamente!</h2>
+    </div>
+  </div>
+
+  <script>
+    // Espera o carregamento do conteúdo para executar o código
+    document.addEventListener("DOMContentLoaded", () => {
+        const modal = document.getElementById("modal");
+
+        // Mostrar o modal automaticamente
+        setTimeout(() => {
+            modal.classList.add("show");
+
+            // Fechar o modal após 5 segundos
+            setTimeout(() => {
+                modal.classList.remove("show");
+            }, 5000);
+        }, 500);
+    });
+  </script>
+</body>
+</html>
