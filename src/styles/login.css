@@ -2,21 +2,30 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: calc(100dvh - 7.5rem);
+  height: calc(100dvh - 7.5rem);
+  background-image: url(../assets/images/bg.svg);
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
-.sectionRaiz .div_Bg_Form{
+.sectionRaiz .div_Bg_Form {
   width: 80%;
+  height: 45rem;
+  max-height: 85%;
 }
 
 @media (max-width: 767px) {
   .sectionRaiz {
-    min-height: calc(100dvh - 7.25rem);
+    height: calc(100dvh - 7.25rem);
+  }
+  .sectionRaiz .div_Bg_Form {
+    width: 90%;;
   }
 }
 
 @media (max-width: 478px) {
   .sectionRaiz {
-    min-height: calc(100dvh - 8.5rem);
+    height: calc(100dvh - 8.5rem);
   }
 }

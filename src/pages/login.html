@@ -75,11 +75,41 @@
   <main>
     <section class="sectionRaiz mt-16 bg-gray-600">
       <div class="flex div_Bg_Form mx-4 rounded-lg shadow-lg">
-        <div class="w-1/2">
+        <div class="hidden lg:flex lg:w-1/2">
           <img src="../assets/images/servico1.jpg" alt="Imagem de fundo" class="w-full h-full object-cover rounded-l-lg">
         </div>
-        <div class="w-1/2 bg-gray-100 rounded-r-lg">
-          
+        <div class="w-full lg:w-1/2 flex flex-col justify-center bg-white p-6 sm:p-8 md:p-11 lg:p-14 rounded-lg lg:rounded-r-lg lg:rounded-l-none">
+          <div class="flex justify-center md:justify-start mb-8">
+            <img src="../assets/icons/favicon.png" alt="ClimaTech Logo" class="h-11 w-11 mr-2">
+            <span class="text-gray-800 text-4xl font-semibold">ClimaTech</span>
+          </div>
+          <span class="mb-4">Acesse sua Conta:</span>
+          <form>
+            <div class="mb-4">
+              <label for="email">Usuário</label>
+              <input id="email" type="email" class="w-full px-3 py-2 border border-gray-300 rounded-lg bg-[#F1F3F5] outline-[#FF8202]" placeholder="Seu e-mail" required/>
+            </div>
+            <div class="mb-4">
+              <label for="password">Senha</label>
+              <input id="password" type="password" class="w-full px-3 py-2 border border-gray-300 rounded-lg bg-[#F1F3F5] outline-[#FF8202]" placeholder="Sua senha" required/>
+            </div>
+            <div class="flex flex-col items-start space-y-2 sm:flex-row sm:items-center justify-between">
+              <div class="flex items-center">
+                <input id="remember-me" type="checkbox" class="h-4 w-4 text-orange-500 rounded" />
+                <label for="remember-me" class="ml-2 block text-sm">Lembrar-me</label>
+              </div>
+              <div class="text-sm w-full text-center sm:w-auto">
+                <a href="#" class="hover:text-slate-600">
+                  Esqueceu sua senha?
+                </a>
+              </div>
+            </div>
+            <div class="mt-8">
+              <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded-lg shadow-md text-sm bg-gray-800 font-medium text-white">
+                Entrar
+              </button>
+            </div>
+          </form>
         </div>
       </div>
     </section>
