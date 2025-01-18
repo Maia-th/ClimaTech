@@ -76,7 +76,9 @@
 
 ## Banco de Dados
 
-<div align="center">![diagram](https://github.com/user-attachments/assets/8c918dd9-1c32-4e00-95fd-820a53d0517d)</div>
+<div align="center">
+<img alt='Fluxo do GitFlow' src='../assets/diagramaER.png'/>
+</div>
 
 - [Dicionário de Dados](./dicionarioBD.md)
 
