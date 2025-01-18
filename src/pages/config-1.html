@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="../assets/icons/favicon.png" type="image/x-icon">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+
+    <script src="../scripts/formsConfig.js"></script>
+    <script src="../scripts/menuConfig.js"></script>
+
+    <title>Editar Dados Pessoais</title>
+    <link rel="stylesheet" href="../styles/config.css">
+</head>
+
+<body class="font-sans flex h-screen bg-cover bg-center bg-fixed" style="background-image: url('../assets/images/fundos.png');">
+    <header class="h-screen z-50 relative border-0 shadow-none">
+        <button class="hamburger block text-2xl bg-none border-0 text-white cursor-pointer fixed top-8 left-6" onclick="toggleMenu()">
+            <i class="fas fa-bars"></i>
+        </button>
+        <nav class="top-0 left-0 pt-0 h-full w-150 z-[1000]">
+
+            <div class="menu pt-8 pb-8 flex flex-col h-screen">
+                <div id="iconCT" class="flex items-center pl-5 mb-7">
+                    <img src="../assets/icons/favicon.png" alt="ClimaTech Logo" class="mr-1">
+                    <span class="text-white text-2xl font-semibold">ClimaTech</span>
+                </div>
+                <a href="#" class="flex items-center text-white no-underline my-2 text-base px-5 py-2.5 rounded-md transition-colors duration-300 cursor-pointer">
+                    <i class="fas fa-home"></i> Dashboard
+                </a>
+                <button onclick="showForm('dados-pessoais'); selectMenuItem()" class="flex items-center text-white my-2 text-base px-5 py-2.5 rounded-md transition-colors duration-300 cursor-pointer">
+                    <i class="fas fa-user"></i> Dados Pessoais
+                </button>
+                <button onclick="showForm('usuarios'); selectMenuItem()" class="flex items-center text-white my-2 text-base px-5 py-2.5 rounded-md transition-colors duration-300 cursor-pointer">
+                    <i class="fas fa-users"></i> Usuários
+                </button>
+                <button onclick="showForm('newsletter'); selectMenuItem()" class="flex items-center text-white my-2 text-base px-5 py-2.5 rounded-md transition-colors duration-300 cursor-pointer">
+                    <i class="fas fa-envelope"></i> Newsletter
+                </button>
+                <a href="../../index.html" id="sair" class="flex items-center text-white no-underline mt-auto text-base px-5 py-2.5 rounded-md transition-colors duration-300 cursor-pointer">
+                    <i class="fas fa-sign-out-alt"></i> Sair
+                  </a>
+            </div>
+        </nav>
+    </header>
+
+    <main class="container flex-1 p-7 flex justify-center items-center transition-all duration-300 ease-in-out">
+        <div id="dados-pessoais"  class="form-container bg-white p-5 rounded-sm shadow-md w-full max-h-full">
+            <h2 class="text-2xl font-bold">Editar Dados Pessoais</h2>
+            <hr class="border-0 border-t my-1 mb-5 mx-auto">
+
+            <form>
+                <div class="form-group mb-5">
+                    <label for="username">Nome de Usuário</label>
+                    <input type="text" id="username" placeholder="Digite seu nome de usuário">
+                </div>
+                <div class="form-group  mb-5">
+                    <label for="email">Email de Cadastro</label>
+                    <input type="email" id="email" placeholder="Digite seu e-mail cadastrado">
+                </div>
+                <div class="form-group mb-5">
+                    <label for="current-password">Senha Atual</label>
+                    <input type="text" id="current-password" value="******" readonly>
+                </div>
+                <div class="form-group mb-5">
+                    <label for="new-password">Nova Senha</label>
+                    <input type="password" id="new-password" placeholder="Digite a nova senha">
+                </div>
+                <div class="form-group mb-5">
+                    <label for="confirm-password">Repetir Nova Senha</label>
+                    <input type="password" id="confirm-password" placeholder="Repita a nova senha">
+                </div>
+                <div class="form-actions mb-5 flex justify-end gap-8">
+                    <button type="button" class="cancel px-8 py-2.5 border-0 rounded-md text-sm cursor-pointer">Cancelar</button>
+                    <button type="submit" class="confirm px-8 py-2.5 border-0 rounded-md text-sm cursor-pointer" >Confirmar</button>
+                </div>
+            </form>
+        </div>
+
+        <div id="usuarios" class="form-container hidden">
+            <h2>Usuários</h2>
+        </div>
+
+        <div id="newsletter" class="form-container hidden">
+            <h2>Newsletter</h2>
+        </div>
+    </main>
+
+</body>
+
+</html>
