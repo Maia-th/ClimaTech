@@ -76,6 +76,9 @@
 
 ## Banco de Dados
 
-<div align="center">⚠️ Diagrama ER Em Breve!</div>
+<div align="center">
+<img alt='Fluxo do GitFlow' src='../assets/diagramaER.png'/>
+</div>
 
 - [Dicionário de Dados](./dicionarioBD.md)
+

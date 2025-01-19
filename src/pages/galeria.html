@@ -11,6 +11,7 @@
   <link rel="stylesheet" href="../styles/galeria.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css">
+  <link rel="stylesheet" href="../styles/buttonLogin.css">
   <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -30,20 +31,38 @@
             <img src="../assets/icons/favicon.png" alt="ClimaTech Logo" class="h-8 w-8 mr-2">
             <span class="text-white text-2xl font-semibold">ClimaTech</span>
           </div>
-          <div>
-            <a href="../../index.html#home"
+          <div class="flex items-center space-x-3">
+            <a href="../../index.html#home" onclick="closeDropdown()"
               class="scroll-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-base font-medium">Home</a>
-            <a href="../../index.html#servicos"
+            <a href="../../index.html#servicos" onclick="closeDropdown()"
               class="scroll-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-base font-medium">Serviços</a>
-            <a href="#galeria"
-              class="scroll-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-base font-medium">Galeria</a>
-            <a href="../../index.html#depoimentos"
-              class="scroll-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-base font-medium">Depoimentos</a>
-            <a href="./sobre.html#sobre-nos"
-              class="scroll-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-base font-medium">Sobre</a>
-            <a href="../../index.html#contatos"
+            <div class="relative inline-block text-left">
+              <button onclick="toggleDropdown()"
+                class="scroll-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-base font-medium">
+                Saiba Mais
+              </button>
+              <div id="dropdown-menu"
+                class="hidden absolute left-1/2 transform -translate-x-1/2 mt-2 w-40 bg-white rounded-md shadow-lg z-50 text-center">
+                <a href="./sobre.html#sobre-nos" onclick="closeDropdown()"
+                  class="block px-4 py-2 text-gray-800 hover:bg-gray-100 rounded-md">Sobre Nós</a>
+                <a href="../../index.html#depoimentos" onclick="closeDropdown()"
+                  class="block px-4 py-2 text-gray-800 hover:bg-gray-100 rounded-md">Depoimentos</a>
+                <a href="#galeria" onclick="closeDropdown()"
+                  class="block px-4 py-2 text-gray-800 hover:bg-gray-100 rounded-md">Galeria de
+                  Fotos</a>
+              </div>
+            </div>
+            <a href="../../index.html#contatos" onclick="closeDropdown()"
               class="scroll-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-base font-medium">Contatos</a>
-            <a href="#" class="bg-yellow-500 text-white px-3 py-2 rounded-md text-base font-medium">Login</a>
+            <a href="./login.html" onclick="closeDropdown()"
+              class="login-link bg-yellow-500 text-white font-semibold px-3 py-2 rounded-lg shadow-md transform transition-transform duration-300 hover:scale-105 flex items-center">
+              Login
+              <svg class="ml-1 w-5 h-5 transition-transform duration-300" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                </path>
+              </svg>
+            </a>
           </div>
         </div>
       </nav>
@@ -63,19 +82,20 @@
           </div>
         </div>
         <nav id="mobile-menu" class="hidden md:hidden mt-2 text-center">
-          <a href="../../index.html#home" onclick="showMenu()"
+          <a href="../../index.html#home"
             class="scroll-link block text-white px-3 py-2 rounded-md text-base font-medium">Home</a>
-          <a href="../../index.html#servicos" onclick="showMenu()"
+          <a href="../../index.html#servicos"
             class="scroll-link block text-white px-3 py-2 rounded-md text-base font-medium">Serviços</a>
-          <a href="#galeria" onclick="showMenu()"
-            class="scroll-link block text-white px-3 py-2 rounded-md text-base font-medium">Galeria</a>
-          <a href="../../index.html#depoimentos" onclick="showMenu()"
+          <a href="../../index.html#depoimentos"
             class="scroll-link block text-white px-3 py-2 rounded-md text-base font-medium">Depoimentos</a>
-          <a href="./sobre.html#sobre-nos" onclick="showMenu()"
-            class="scroll-link block text-white px-3 py-2 rounded-md text-base font-medium">Sobre</a>
-          <a href="../../index.html#contatos" onclick="showMenu()"
+          <a href="../../index.html#contatos"
             class="scroll-link block text-white px-3 py-2 rounded-md text-base font-medium">Contatos</a>
-          <a href="#" class="block mt-2 bg-yellow-500 text-white px-3 py-2 rounded-md text-base font-medium">Login</a>
+          <a href="./sobre.html#sobre-nos"
+            class="scroll-link block text-white px-3 py-2 rounded-md text-base font-medium">Sobre Nós</a>
+          <a href="#galeria" onclick="showMenu()"
+            class="scroll-link block text-white px-3 py-2 rounded-md text-base font-medium">Galeria de Fotos</a>
+          <a href="./login.html"
+            class="block mt-2 bg-yellow-500 text-white px-3 py-2 rounded-md text-base font-medium">Login</a>
         </nav>
       </div>
     </div>

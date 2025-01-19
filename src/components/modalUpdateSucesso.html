@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modal Example</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+        }
+
+        /* Sobreposição do modal */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+        }
+
+        /* Conteúdo do modal */
+        .modal {
+            background: #fff;
+            border-radius: 8px;
+            width: 90%;
+            max-width: 400px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            padding: 20px;
+        }
+
+        .icon {
+            font-size: 2rem;
+            color: #333; /* Cor do ícone */
+            margin-bottom: 10px;
+            border: 2px solid #f0a202;
+            border-radius: 50%;
+            padding: 5px;
+            display: inline-block;
+        }
+
+        .modal h2 {
+            font-size: 20px;
+            margin: 15px 0 20px;
+            color: #333;
+        }
+
+        /* Estilo do botão */
+        .modal-button {
+            padding: 10px 20px;
+            font-size: 14px;
+            border-radius: 5px;
+            cursor: pointer;
+            border: none;
+            background-color: #f0a202;
+            color: white;
+        }
+
+        .modal-button:focus {
+            outline: none;
+            box-shadow: 0 0 3px rgba(0, 0, 0, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .modal {
+                padding: 15px;
+            }
+
+            .modal h2 {
+                font-size: 18px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Sobreposição do modal -->
+    <div class="modal-overlay" id="modal-overlay" style="display: none;">
+        <div class="modal">
+            <div class="icon">&#10004;</div> <!-- Ícone de sucesso -->
+            <h2>Alteração realizada com sucesso!</h2>
+            <button class="modal-button" onclick="closeModal()">Fechar</button>
+        </div>
+    </div>
+
+    <script>
+        // Função para abrir o modal
+        function openModal() {
+            document.getElementById('modal-overlay').style.display = 'flex';
+        }
+
+        // Função para fechar o modal
+        function closeModal() {
+            document.getElementById('modal-overlay').style.display = 'none';
+        }
+
+        // Abre o modal assim que a página carregar (para fins de demonstração)
+        window.onload = openModal;
+    </script>
+</body>
+</html>

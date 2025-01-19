@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ClimaTech</title>
+  <link rel="icon" href="../assets/icons/favicon.png" type="image/x-icon">
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="../styles/global.css">
+  <link rel="stylesheet" href="../styles/login.css">
+  <link rel="stylesheet" href="../styles/buttonLogin.css">
+  <script src="../scripts/mobile.js"></script>
+</head>
+
+<body>
+  <header class="fixed top-0 left-0 w-full z-50">
+    <div class="bg-gray-800 p-4 ">
+      <nav>
+        <div class="hidden container mx-auto md:flex justify-between items-center">
+          <div class="flex items-center">
+            <img src="../assets/icons/favicon.png" alt="ClimaTech Logo" class="h-8 w-8 mr-2">
+            <span class="text-white text-2xl font-semibold">ClimaTech</span>
+          </div>
+          <div class="flex items-center space-x-3">
+            <a href="../../index.html#home" onclick="closeDropdown()"
+              class="scroll-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-base font-medium">Home</a>
+            <a href="../../index.html#servicos" onclick="closeDropdown()"
+              class="scroll-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-base font-medium">Serviços</a>
+            <div class="relative inline-block text-left">
+              <button onclick="toggleDropdown()"
+                class="scroll-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-base font-medium">
+                Saiba Mais
+              </button>
+              <div id="dropdown-menu"
+                class="hidden absolute left-1/2 transform -translate-x-1/2 mt-2 w-40 bg-white rounded-md shadow-lg z-50 text-center">
+                <a href="./sobre.html#sobre-nos" onclick="closeDropdown()"
+                  class="block px-4 py-2 text-gray-800 hover:bg-gray-100 rounded-md">Sobre Nós</a>
+                <a href="../../index.html#depoimentos" onclick="closeDropdown()"
+                  class="block px-4 py-2 text-gray-800 hover:bg-gray-100 rounded-md">Depoimentos</a>
+                <a href="./galeria.html#galeria" onclick="closeDropdown()"
+                  class="block px-4 py-2 text-gray-800 hover:bg-gray-100 rounded-md">Galeria de
+                  Fotos</a>
+              </div>
+            </div>
+            <a href="../../index.html#contatos" onclick="closeDropdown()"
+              class="scroll-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-base font-medium">Contatos</a>
+            <a href="./login.html" onclick="closeDropdown()"
+              class="login-link bg-yellow-500 text-white font-semibold px-3 py-2 rounded-lg shadow-md transform transition-transform duration-300 hover:scale-105 flex items-center">
+              Login
+              <svg class="ml-1 w-5 h-5 transition-transform duration-300" fill="none" stroke="currentColor"
+                viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7">
+                </path>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </nav>
+      <div class="md:hidden">
+        <div class="container mx-auto flex justify-between items-center">
+          <div class="flex items-center">
+            <img src="../assets/icons/favicon.png" alt="ClimaTech Logo" class="h-8 w-8 mr-2">
+            <span class="text-white text-2xl font-semibold">ClimaTech</span>
+          </div>
+          <div>
+            <button id="menu-button" onclick="showMenu()" class="text-gray-300 hover:text-white focus:outline-none">
+              <svg class="h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+              </svg>
+            </button>
+          </div>
+        </div>
+        <nav id="mobile-menu" class="hidden md:hidden mt-2 text-center">
+          <a href="../../index.html#home"
+            class="scroll-link block text-white px-3 py-2 rounded-md text-base font-medium">Home</a>
+          <a href="../../index.html#servicos"
+            class="scroll-link block text-white px-3 py-2 rounded-md text-base font-medium">Serviços</a>
+          <a href="../../index.html#depoimentos"
+            class="scroll-link block text-white px-3 py-2 rounded-md text-base font-medium">Depoimentos</a>
+          <a href="../../index.html#contatos"
+            class="scroll-link block text-white px-3 py-2 rounded-md text-base font-medium">Contatos</a>
+          <a href="./sobre.html#sobre-nos"
+            class="scroll-link block text-white px-3 py-2 rounded-md text-base font-medium">Sobre Nós</a>
+          <a href="./galeria.html#galeria"
+            class="scroll-link block text-white px-3 py-2 rounded-md text-base font-medium">Galeria de Foto</a>
+          <a href="./login.html"
+            class="block mt-2 bg-yellow-500 text-white px-3 py-2 rounded-md text-base font-medium">Login</a>
+        </nav>
+      </div>
+    </div>
+    </div>
+  </header>
+  <main>
+    <section class="sectionRaiz mt-16 bg-gray-600">
+      <div class="flex div_Bg_Form mx-4 rounded-lg shadow-lg">
+        <div class="hidden lg:flex lg:w-1/2">
+          <img src="../assets/images/servico1.jpg" alt="Imagem de fundo"
+            class="w-full h-full object-cover rounded-l-lg">
+        </div>
+        <div
+          class="w-full lg:w-1/2 flex flex-col justify-center bg-white p-6 sm:p-8 md:p-11 lg:p-14 rounded-lg lg:rounded-r-lg lg:rounded-l-none">
+          <div class="flex justify-center md:justify-start mb-8">
+            <img src="../assets/icons/favicon.png" alt="ClimaTech Logo" class="h-11 w-11 mr-2">
+            <span class="text-gray-800 text-4xl font-semibold">ClimaTech</span>
+          </div>
+          <span class="mb-4">Acesse sua Conta:</span>
+          <form>
+            <div class="mb-4">
+              <label for="email">Usuário</label>
+              <input id="email" type="email"
+                class="w-full px-3 py-2 border border-gray-300 rounded-lg bg-[#F1F3F5] outline-[#FF8202]"
+                placeholder="Seu e-mail" required />
+            </div>
+            <div class="mb-4">
+              <label for="password">Senha</label>
+              <input id="password" type="password"
+                class="w-full px-3 py-2 border border-gray-300 rounded-lg bg-[#F1F3F5] outline-[#FF8202]"
+                placeholder="Sua senha" required />
+            </div>
+            <div class="flex flex-col items-start space-y-2 sm:flex-row sm:items-center justify-between">
+              <div class="flex items-center">
+                <input id="remember-me" type="checkbox" class="h-4 w-4 text-orange-500 rounded" />
+                <label for="remember-me" class="ml-2 block text-sm">Lembrar-me</label>
+              </div>
+              <div class="text-sm w-full text-center sm:w-auto">
+                <a href="#" class="hover:text-slate-600">
+                  Esqueceu sua senha?
+                </a>
+              </div>
+            </div>
+            <div class="mt-8">
+              <button type="submit"
+                class="w-full flex justify-center py-2 px-4 border border-transparent rounded-lg shadow-md text-sm bg-gray-800 font-medium text-white hover:bg-blue-700">
+                Entrar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="bg-gray-800 text-white p-4">
+    <div class="text-sm md:text-base text-center">
+      <p>S&G Climatização e Refrigeração © 2025. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+</body>
+
+</html>

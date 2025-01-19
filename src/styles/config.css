@@ -1,0 +1,93 @@
+#iconCT img.transparent {
+    opacity: 0; 
+    transition: opacity 0.3s ease;
+}
+
+nav {
+  position: fixed;
+  background-color: #1f2937;
+  transform: translateX(-100%);
+  transition: transform 0.3s ease;
+} 
+
+nav.active {
+  transform: translateX(0);
+}
+
+nav a:hover {
+  background-color: #34495e;
+}
+
+.menu img {
+    width: 18%;
+    height: auto;
+}
+
+.menu a i,
+.menu button i {
+  margin-right: 8px; 
+  font-size: 1.2rem;
+}
+
+h2 {
+    color: #1f2937;
+}
+
+hr {
+    border-top: 1px solid #1f2937;
+} 
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+  color: #34495e;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #a1a7aa;
+  border-radius: 8px;
+  font-size: 0.8rem;
+}
+
+.form-actions .cancel {
+  background-color: #F59E0B;
+  color: white;
+}
+
+.form-actions .cancel:hover {
+  background-color: #e6950b;
+}
+
+.form-actions .confirm {
+  background-color: #34495e;
+  color: white;
+}
+
+.form-actions .confirm:hover {
+  background-color: #243342;
+}
+
+nav button:hover {
+  background-color: #34495e;
+}
+.hamburger {
+    z-index: 1100; 
+}
+
+@media (min-width: 769px) {
+  nav {
+    transform: translateX(0);
+    position: relative;
+    height: auto;
+  } 
+
+  .hamburger {
+    display: none;
+  }
+}
+
+.hidden {
+  display: none;
+} 
