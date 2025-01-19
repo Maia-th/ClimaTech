@@ -24,19 +24,29 @@
                         <span class="text-white text-2xl font-semibold">ClimaTech</span>
                     </div>
                     <div>
-                        <a href="#home"
+                        <a href="#home" onclick="closeDropdown()"
                             class="scroll-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-base font-medium">Home</a>
-                        <a href="#servicos"
+                        <a href="#servicos" onclick="closeDropdown()"
                             class="scroll-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-base font-medium">Serviços</a>
-                        <!-- <a href="src/pages/galeria.html#galeria"
-                            class="scroll-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-base font-medium">Galeria</a> -->
-                        <a href="#depoimentos"
-                            class="scroll-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-base font-medium">Depoimentos</a>
-                        <!-- <a href="src/pages/sobre.html#sobre-nos"
-                            class="scroll-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-base font-medium">Sobre</a> -->
-                        <a href="#contatos"
+                        <div class="relative inline-block text-left">
+                            <button onclick="toggleDropdown()"
+                                class="scroll-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-base font-medium">
+                                Saiba Mais
+                            </button>
+                            <div id="dropdown-menu"
+                                class="hidden absolute left-1/2 transform -translate-x-1/2 mt-2 w-40 bg-white rounded-md shadow-lg z-50 text-center">
+                                <a href="src/pages/sobre.html#sobre-nos" onclick="closeDropdown()"
+                                    class="block px-4 py-2 text-gray-800 hover:bg-gray-100 rounded-md">Sobre Nós</a>
+                                <a href="#depoimentos" onclick="closeDropdown()"
+                                    class="block px-4 py-2 text-gray-800 hover:bg-gray-100 rounded-md">Depoimentos</a>
+                                <a href="src/pages/galeria.html#galeria" onclick="closeDropdown()"
+                                    class="block px-4 py-2 text-gray-800 hover:bg-gray-100 rounded-md">Galeria de
+                                    Fotos</a>
+                            </div>
+                        </div>
+                        <a href="#contatos" onclick="closeDropdown()"
                             class="scroll-link text-gray-300 hover:text-white px-3 py-2 rounded-md text-base font-medium">Contatos</a>
-                        <a href="#"
+                        <a href="src/pages/login.html" onclick="closeDropdown()"
                             class="bg-yellow-500 ml-3 text-white px-3 py-2 rounded-md text-base font-medium">Login</a>
                     </div>
                 </div>
@@ -63,15 +73,16 @@
                         class="scroll-link block text-white px-3 py-2 rounded-md text-base font-medium">Home</a>
                     <a href="#servicos" onclick="showMenu()"
                         class="scroll-link block text-white px-3 py-2 rounded-md text-base font-medium">Serviços</a>
-                    <a href="src/pages/galeria.html#galeria" onclick="showMenu()"
-                        class="scroll-link block text-white px-3 py-2 rounded-md text-base font-medium">Galeria</a>
                     <a href="#depoimentos" onclick="showMenu()"
                         class="scroll-link block text-white px-3 py-2 rounded-md text-base font-medium">Depoimentos</a>
-                    <a href="src/pages/sobre.html#sobre-nos" onclick="showMenu()"
-                        class="scroll-link block text-white px-3 py-2 rounded-md text-base font-medium">Sobre</a>
                     <a href="#contatos" onclick="showMenu()"
                         class="scroll-link block text-white px-3 py-2 rounded-md text-base font-medium">Contatos</a>
-                    <a href="#"
+                    <a href="src/pages/sobre.html#sobre-nos"
+                        class="scroll-link block text-white px-3 py-2 rounded-md text-base font-medium">Sobre Nós</a>
+                    <a href="src/pages/galeria.html#galeria"
+                        class="scroll-link block text-white px-3 py-2 rounded-md text-base font-medium">Galeria de
+                        Fotos</a>
+                    <a href="src/pages/login.html"
                         class="block mt-2 bg-yellow-500 text-white px-3 py-2 rounded-md text-base font-medium">Login</a>
                 </nav>
             </div>
@@ -120,7 +131,7 @@
                             <span class="flex justify-end text-yellow-500 font-bold cursor-pointer">Condições</span>
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
         </section>
