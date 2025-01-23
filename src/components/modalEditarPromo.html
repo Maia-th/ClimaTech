@@ -1,0 +1,254 @@
+
+<div id="modal">
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <div class="posicao">
+                <div class="formulario">
+                    <form>
+                        <h3 style="margin-bottom: 10px;">Título da promoção</h3>
+                        <div class="search-box-generica">
+                            <div class="search-field">
+                                 <input type="text" placeholder="O título da promoção">
+                             </div>
+                        </div>
+                        <h3 style="margin-bottom: 10px; margin-top: 10px;">Descrição da promoção</h3>
+                        <div class="search-box-promo">
+                            <div class="search-field-promo">
+                                <textarea id="descricao" placeholder="Descrição" rows="4"></textarea>
+                            </div>
+                        </div>
+                        <h3 style="margin-bottom: 10px; margin-top: 10px;">Condições</h3>
+                        <div class="search-box-generica">
+                            <div class="search-field">
+                                 <input type="text" placeholder="Condições para participar da promoção">
+                             </div>
+                        </div>
+                        <div class="validade-status">
+                            <div class="validade">
+                                <h3 style="margin-bottom: 10px; margin-top: 10px;">Validade da Promoção</h3>
+                                <div class="search-box-validade-status">
+                                    <div class="search-field-validade-status">
+                                        <input type="date" placeholder="01/01/2030">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="status">
+                                <h3 style="margin-bottom: 10px; margin-top: 10px;">Status da Promoção</h3>
+                               <div class="search-box-validade-status">
+                                   <div class="search-field-validade-status">
+                                        <select>
+                                            <option value="" disabled selected hidden>Lista de Seleção de Status</option>
+                                            <option value="0">Ativo</option>
+                                            <option value="1">Inativo</option>
+                                          </select>
+                                    </div>
+                                </div>
+                            </div>                                  
+                        </div>
+                   </form>
+               </div>
+               <div class="upload-img">
+                   <img class="img-placeholder" src="..\assets\images\imgplaceholder.png">
+                   <div class="texto-upload">
+                     <img width="24" height="24" src="https://img.icons8.com/material-sharp/24/upload--v1.png" alt="upload--v1"/>
+                     <p>Fazer upload de imagem</p>
+                   </div>
+               </div>
+            </div>
+            <div class="botoes-modal">
+                <button onclick="document.getElementById('modal').style.display='none'; document.getElementById('modal-overlay').style.display='none';" 
+                class="cancelar">Cancelar</button>
+                <button type="button" class="salvar">Salvar</button>
+                
+            </div>
+        </div>
+    </div>
+</div>
+<style>
+    #modal {
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background: white;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        z-index: 1000;
+        padding: 20px;
+        width: 1000px;
+        border-radius: 8px;
+    }
+
+    #modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        z-index: 999;
+    }
+    
+    /*texto e icone de upload de imagem*/
+    
+    .texto-upload {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-top: 10px;
+    }
+    
+    .texto-upload p {
+        margin-left: 10px;
+        color: rgb(119, 119, 119);
+    }
+
+    .texto-upload img {
+        opacity: 0.5;
+    }
+    
+    .img-placeholder {
+        height: 300px;
+        width: 280px;
+    }
+    
+    /* posiscionamento dos campos*/
+    
+    .posicao {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 40px;
+    }
+    
+    .formulario {
+        flex-basis: 70%;
+    }
+
+    .img-placeholder{
+        border-radius: 3px;
+        border-style: solid;
+        border-color: #868686;
+    }
+    
+    /* estilização campos de formulário*/
+    
+    .search-box-generica {
+        display: flex;
+        align-items: center;
+        background-color: #fff;
+        height: 2.5rem;
+        width: 100%;
+        border-style: solid;
+        border-radius: 8px;
+        border-width: 1px;
+        border-color: rgb(133, 133, 133);
+    }
+    
+    .search-field-generica {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 5px;
+        color: rgb(133, 133, 133);
+    }
+    
+    .search-field-generica, input {
+        border: none;
+        outline: none;
+        width: 100%;
+        margin-left: 5px;
+        margin-right: 5px;
+    }
+    
+    /* Estilização do campo de descrição */
+    
+    .search-box-promo {
+        display: flex;
+        align-items: center;
+        background-color: #fff;
+        width: 100%;
+        border-style: solid;
+        border-radius: 8px;
+        border-width: 1px;
+        border-color: rgb(133, 133, 133);
+        padding: 2px;
+    }
+    
+    .search-field-promo {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 5px;
+    }
+    
+    .search-field-box, textarea {
+        border: none;
+        outline: none;
+        width: 100%;
+        resize: none;
+    }
+    
+    /* Estilização do campo de validade e status */
+    
+    .search-box-validade-status {
+        display: flex;
+        align-items: center;
+        background-color: #fff;
+        height: 40px;
+        width: 100%;
+        border-style: solid;
+        border-radius: 8px;
+        border-width: 1px;
+        border-color: rgb(133, 133, 133);
+    }
+    
+    .search-field-validad-status {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        padding: 5px;
+    }
+    
+    .search-field-validade-status select {
+        border: none;
+        outline: none;
+        width: 100%;
+    }
+    
+    /* Posicionamento do campo de validade e status */
+    
+    .validade-status {
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 80px;
+    }
+    
+    /* botões */
+    
+    .botoes-modal {
+        display: flex;
+        justify-content: flex-end;
+        gap: 20px;
+    }
+    
+    .cancelar {
+        padding: 10px 20px;
+        font-size: 14px;
+        border-radius: 5px;
+        cursor: pointer;
+        border: none;
+        background-color: rgb(31, 41, 55);
+        color: white;
+    }
+    
+    .salvar {
+        padding: 10px 20px;
+        font-size: 14px;
+        border-radius: 5px;
+        cursor: pointer;
+        border: none;
+        background-color: #F59E0B;
+        color: white;
+    }
+</style>
