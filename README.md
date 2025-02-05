@@ -29,14 +29,24 @@ cd ClimaTech
 npm install
 ```
 
-## Suba o Banco de Dados
+## Suba o banco de dados:
 
-- ⚠️ Em Breve!
+1. Crie o banco de dados:
+
+```sql
+CREATE DATABASE ClimaTech;
+```
+
+2. Importe o esquema do banco de dados:
+
+```bash
+mysql -u seu_usuario -p ClimaTech < ClimaTech/src/api/backup/ClimaTech.sql
+```
 
 ## Configure o arquivo .env:
 
-- Copie o arquivo `.env.example` e renomeie para `.env`
-- Defina as variáveis de ambiente como o banco de dados, serviços de cache e outras integrações.
+- Copie o arquivo `.env.example` e renomeie para `.env`.
+- Defina as variáveis de ambiente.
 
 ## Iniciar o Backend
 
@@ -104,4 +114,4 @@ git branch -d feature/nome-da-feature
 
 ## Bibliotecas
 
-- ⚠️ Em Breve!
+- [Axios - HTTP Client](https://axios-http.com/)
