@@ -70,7 +70,7 @@
 - Contém arquivos de configuração, como configuração de banco de dados e variáveis de ambiente.
 - Ex: `dbConfig.js`, `appConfig.js`.
 
-#### 6. **Pasta `backup/`**
+#### 7. **Pasta `backup/`**
 - Contém o arquivo do banco de dados MySQL.
 
 #### 8. **Arquivo `index.js`**
