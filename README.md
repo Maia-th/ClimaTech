@@ -13,6 +13,7 @@ Este projeto está em desenvolvimento ativo. Todas as novas funcionalidades e co
 Para rodar o projeto localmente, certifique-se de ter a seguinte ferramenta instalada:
 
 - Node.js >= 20.18.0
+- MySQL >= 8.x ou outro banco de dados compatível
 - Extensão Live Server no VS Code
 
 ## Instalação
