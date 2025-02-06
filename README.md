@@ -5,6 +5,7 @@ Este projeto está em desenvolvimento ativo. Todas as novas funcionalidades e co
 <img alt='Fluxo do GitFlow' src='.github/assets/gitFlow.png'/>
 
 - [Estrutura do Projeto](.github/docs/Geral.md)
+- [Documentação da API](.github/docs/API-Info.md)
 - [Template de Pull Request](.github/docs/pull-request-template.md)
 
 ## Requisitos do Ambiente

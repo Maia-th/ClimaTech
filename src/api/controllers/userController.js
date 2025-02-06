@@ -3,8 +3,8 @@ const User = require('../models/userModel');
 // Cadastrar Usuário
 exports.createUser = async (req, res) => {
   try {
-    const { nome, email, senha } = req.body;
-    const newUser = await User.create({ nome, email, senha });
+    const { Name, email, password, access } = req.body;
+    const newUser = await User.create({ Name, email, password, access });
     res.status(201).json(newUser);
   } catch (error) {
     res.status(500).json({ message: 'Erro ao cadastrar usuário', error });
@@ -15,9 +15,9 @@ exports.createUser = async (req, res) => {
 exports.updateUser = async (req, res) => {
   try {
     const { id } = req.params;
-    const [updated] = await User.update(req.body, { where: { id } });
+    const [updated] = await User.update(req.body, { where: { idUsers: id } });
     if (updated) {
-      const updatedUser = await User.findOne({ where: { id } });
+      const updatedUser = await User.findOne({ where: { idUsers: id } });
       res.status(200).json(updatedUser);
     } else {
       res.status(404).json({ message: 'Usuário não encontrado' });
@@ -31,7 +31,7 @@ exports.updateUser = async (req, res) => {
 exports.getUser = async (req, res) => {
   try {
     const { id } = req.params;
-    const user = await User.findOne({ where: { id } });
+    const user = await User.findOne({ where: { idUsers: id } });
     if (user) {
       res.status(200).json(user);
     } else {
@@ -46,7 +46,7 @@ exports.getUser = async (req, res) => {
 exports.deleteUser = async (req, res) => {
   try {
     const { id } = req.params;
-    const deleted = await User.destroy({ where: { id } });
+    const deleted = await User.destroy({ where: { idUsers: id } });
     if (deleted) {
       res.status(200).json({ message: 'Usuário excluído com sucesso' });
     } else {
