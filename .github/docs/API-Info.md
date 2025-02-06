@@ -1,5 +1,13 @@
 # Documentação da API
 
+## Índice
+
+1. [Cadastro de Usuário](#cadastro-de-usuário)
+2. [Edição de Usuário](#edição-de-usuário)
+3. [Visualização de Usuário](#visualização-de-usuário)
+4. [Exclusão de Usuário](#exclusão-de-usuário)
+5. [Login de Usuário](#login-de-usuário)
+
 ## Endpoints
 
 ### Cadastro de Usuário
@@ -232,3 +240,5 @@
       }
       ```
 ---
+
+> [Voltar ao Índice](#índice)
