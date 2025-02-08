@@ -8,5 +8,6 @@ router.post('/api/usuarios', verifyToken, createUser);
 router.put('/api/usuarios/:id', verifyToken, updateUser);
 router.get('/api/usuarios/:id', verifyToken, getUser);
 router.delete('/api/usuarios/:id', verifyToken, deleteUser);
+router.get('/api/usuarios', verifyToken, getAllUsers);
 
 module.exports = router;

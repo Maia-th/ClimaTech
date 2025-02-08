@@ -3,8 +3,8 @@ const User = require('../models/userModel');
 // Cadastrar Usuário
 exports.createUser = async (req, res) => {
   try {
-    const { Name, email, password, access } = req.body;
-    const newUser = await User.create({ Name, email, password, access });
+    const { name, email, password, access } = req.body;
+    const newUser = await User.create({ name, email, password, access });
     res.status(201).json(newUser);
   } catch (error) {
     res.status(500).json({ message: 'Erro ao cadastrar usuário', error });
@@ -39,6 +39,16 @@ exports.getUser = async (req, res) => {
     }
   } catch (error) {
     res.status(500).json({ message: 'Erro ao visualizar usuário', error });
+  }
+};
+
+// Listar Todos os Usuários
+exports.getAllUsers= async (req, res) => {
+  try {
+    const users = await User.findAll();
+    res.status(200).json(users);
+  } catch (error) {
+    res.status(500).json({ message: 'Erro ao listar usuários', error });
   }
 };
 

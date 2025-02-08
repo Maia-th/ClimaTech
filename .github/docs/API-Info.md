@@ -25,6 +25,7 @@
   }
   ```
 - **Exemplo de Requisição:**
+
   ```json
   {
     "Name": "John Doe",
@@ -80,6 +81,7 @@
   }
   ```
 - **Exemplo de Requisição:**
+
   ```json
   {
     "Name": "John Doe Updated",
@@ -148,6 +150,7 @@
     }
     ```
 - **Mensagens de Erro:**
+
   - **Código:** 404 Not Found
     - **Corpo:**
       ```json
@@ -156,10 +159,53 @@
       }
       ```
   - **Código:** 500 Internal Server Error
+
     - **Corpo:**
+
       ```json
       {
         "message": "Erro ao visualizar usuário",
+        "error": "Descrição do erro"
+      }
+      ```
+
+### Listar Todos os Usuários
+
+- **Método:** GET
+- **Endpoint:** `/api/usuarios`
+- **Descrição:** Esta rota retorna uma lista de todos os usuários cadastrados.
+
+- **Resposta de Sucesso:**
+  - **Código:** 200 OK
+  - **Corpo:**
+    ```json
+    [
+      {
+        "idUsers": 1,
+        "Name": "John Doe",
+        "email": "john.doe@example.com",
+        "password": "password123",
+        "access": "padrão",
+        "createdAt": "2025-02-06T01:00:19.000Z",
+        "updatedAt": "2025-02-06T01:00:19.000Z"
+      },
+      {
+        "idUsers": 2,
+        "Name": "Jane Doe",
+        "email": "jane.doe@example.com",
+        "password": "password456",
+        "access": "root",
+        "createdAt": "2025-02-07T01:00:19.000Z",
+        "updatedAt": "2025-02-07T01:00:19.000Z"
+      }
+    ]
+    ```
+- **Mensagens de Erro:**
+  - **Código:** 500 Internal Server Error
+    - **Corpo:**
+      ```json
+      {
+        "message": "Erro ao listar usuários",
         "error": "Descrição do erro"
       }
       ```
@@ -208,6 +254,7 @@
   }
   ```
 - **Exemplo de Requisição:**
+
   ```json
   {
     "email": "john.doe@example.com",
@@ -239,6 +286,7 @@
         "error": "Descrição do erro"
       }
       ```
+
 ---
 
 > [Subir ao Topo](#documentação-da-api)
