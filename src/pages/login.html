@@ -90,7 +90,6 @@
         </nav>
       </div>
     </div>
-    </div>
   </header>
   <main>
     <section class="sectionRaiz mt-16 bg-gray-600">
@@ -106,7 +105,7 @@
             <span class="text-gray-800 text-4xl font-semibold">ClimaTech</span>
           </div>
           <span class="mb-4">Acesse sua Conta:</span>
-          <form>
+          <form id="login-form">
             <div class="mb-4">
               <label for="email">Usuário</label>
               <input id="email" type="email"
@@ -147,5 +146,25 @@
     </div>
   </footer>
 </body>
+
+<script type="module">
+  import { userService } from '../services/authService.js';
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
+
+    try {
+      const data = await userService.login(email, password);
+      alert('Login realizado com sucesso! Token: ' + data.token);
+    } catch (error) {
+      alert('Erro ao realizar login: ' + error.message);
+    }
+  }
+
+  // Adiciona o listener de evento ao formulário
+  document.getElementById('login-form').addEventListener('submit', handleSubmit);
+</script>
 
 </html>
