@@ -157,7 +157,7 @@
 
     try {
       const data = await userService.login(email, password);
-      window.location.href = './config-1.html';
+      window.location.href = './dashboard.html';
     } catch (error) {
       alert('Erro ao realizar login: '+ error.message);
       document.getElementById('email').value = '';

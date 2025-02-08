@@ -5,6 +5,7 @@ const userRoutes = require('./routes/userRoutes');
 const authRoutes = require('./routes/authRoutes');
 const path = require('path');
 const privateRoutes = require('./middleware/privateRoutes');
+const verifyToken = require('./utils/jwt');
 
 dotenv.config();
 connectDB();
@@ -33,7 +34,7 @@ app.use(express.static(path.join(__dirname, 'src')));
 app.use(express.json());
 
 app.get('/verify-token', verifyToken, (req, res) => {
-  res.status(200).json({ message: 'Token válido' });
+  res.status(200).json({ message: 'Token válido', user: req.user });
 });
 
 privateRoutes(app);
