@@ -5,7 +5,7 @@
 1. [Cadastro de Usuário](#cadastro-de-usuário)
 2. [Edição de Usuário](#edição-de-usuário)
 3. [Visualização de Usuário](#visualização-de-usuário)
-4. [Listar Todos os Usuário](#listar-todos-os-usuário)
+4. [Listar Todos os Usuário](#listar-todos-os-usuários)
 5. [Exclusão de Usuário](#exclusão-de-usuário)
 6. [Login de Usuário](#login-de-usuário)
 
