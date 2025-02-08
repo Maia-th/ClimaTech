@@ -10,7 +10,7 @@ exports.login = async (req, res) => {
       return res.status(401).json({ message: 'Credenciais inválidas' });
     }
 
-    const token = jwt.sign({ id: user.idUsers, access: user.access }, process.env.JWT_SECRET);
+    const token = jwt.sign({ id: user.idUsers, access: user.access }, process.env.JWT_SECRET, { expiresIn: '1h' });
 
     res.status(200).json({ token });
   } catch (error) {

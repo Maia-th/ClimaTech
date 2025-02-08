@@ -7,10 +7,24 @@ const authRoutes = require('./routes/authRoutes');
 dotenv.config();
 connectDB();
 
+const cors = require('cors');
 const app = express();
 
-app.use(express.json());
+const allowedOrigins = [process.env.URL_FRONTEND_DEPLOY, process.env.URL_FRONTEND_LOCAL];
 
+app.use(cors({
+  origin: function (origin, callback) {
+    if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
+      callback(null, true);
+    } else {
+      callback(new Error('Não permitido por CORS'));
+    }
+  },
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
+  credentials: true,
+}));
+
+app.use(express.json());
 app.use(userRoutes);
 app.use(authRoutes);
 

@@ -157,9 +157,11 @@
 
     try {
       const data = await userService.login(email, password);
-      alert('Login realizado com sucesso! Token: ' + data.token);
+      window.location.href = './config-1.html';
     } catch (error) {
-      alert('Erro ao realizar login: ' + error.message);
+      alert('Erro ao realizar login: '+ error.message);
+      document.getElementById('email').value = '';
+      document.getElementById('password').value = '';
     }
   }
 
