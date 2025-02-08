@@ -42,7 +42,7 @@ CREATE DATABASE ClimaTech;
 2. Importe o esquema do banco de dados:
 
 ```bash
-mysql -u seu_usuario -p ClimaTech < ClimaTech/src/api/backup/ClimaTech.sql
+mysql -u seu_usuario -p ClimaTech < ClimaTech/src/api/backup/ClimaTech.sql;
 ```
 
 ## Configure o arquivo .env:
