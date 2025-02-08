@@ -1,18 +1,15 @@
-import axiosInstance from "./axiosInstance";
-import Cookies from "js-cookie";
+import axiosInstance from "./axiosInstance.js";
+import Cookies from 'https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.mjs';
 
 const ACCESS_TOKEN_KEY = "access_token";
 
 export const userService = {
-  async login(email, password) {
-    return axiosInstance
-      .post("/login", { email, password })
-      .then((response) => {
-        if (response.data.token) {
-          Cookies.set(ACCESS_TOKEN_KEY, response.data.token);
-        }
-        return response.data;
-      });
+  login: async (email, password) => {
+    const response = await axiosInstance.post('/login', {
+      email,
+      password,
+    });
+    return response.data;
   },
   logout: async () => {
     Cookies.set(ACCESS_TOKEN_KEY, "");

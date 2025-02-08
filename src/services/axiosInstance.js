@@ -1,7 +1,7 @@
-import axios from 'axios';
-import Cookies from 'js-cookie';
+import axios from 'https://cdn.skypack.dev/axios';
+import Cookies from 'https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.mjs';
 
-const baseURL = import.meta.env.VITE_API_BASE_URL;
+const baseURL = 'http://localhost:3000/api';
 
 const axiosInstance = axios.create({
   baseURL: baseURL,
