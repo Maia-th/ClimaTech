@@ -46,8 +46,6 @@
       "email": "john.doe@example.com",
       "password": "password123",
       "access": "padrão",
-      "createdAt": "2025-02-06T01:00:19.000Z",
-      "updatedAt": "2025-02-06T01:00:19.000Z"
     }
     ```
 - **Mensagens de Erro:**
@@ -102,8 +100,6 @@
       "email": "john.doe.updated@example.com",
       "password": "newpassword123",
       "access": "root",
-      "createdAt": "2025-02-06T01:00:19.000Z",
-      "updatedAt": "2025-02-06T01:05:19.000Z"
     }
     ```
 - **Mensagens de Erro:**
@@ -146,8 +142,6 @@
       "email": "john.doe@example.com",
       "password": "password123",
       "access": "padrão",
-      "createdAt": "2025-02-06T01:00:19.000Z",
-      "updatedAt": "2025-02-06T01:00:19.000Z"
     }
     ```
 - **Mensagens de Erro:**
@@ -187,8 +181,6 @@
         "email": "john.doe@example.com",
         "password": "password123",
         "access": "padrão",
-        "createdAt": "2025-02-06T01:00:19.000Z",
-        "updatedAt": "2025-02-06T01:00:19.000Z"
       },
       {
         "idUsers": 2,
@@ -196,8 +188,6 @@
         "email": "jane.doe@example.com",
         "password": "password456",
         "access": "root",
-        "createdAt": "2025-02-07T01:00:19.000Z",
-        "updatedAt": "2025-02-07T01:00:19.000Z"
       }
     ]
     ```

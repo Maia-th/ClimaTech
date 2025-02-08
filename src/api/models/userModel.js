@@ -25,8 +25,9 @@ const User = sequelize.define('User', {
     type: DataTypes.ENUM('root', 'padrão'),
     allowNull: false,
   },
-}, {
-  timestamps: true,
+},{
+  tableName: 'Usuarios',
+  timestamps: false,
 });
 
 module.exports = User;
