@@ -33,7 +33,7 @@ app.use(express.static(path.join(__dirname, 'src')));
 // Middleware para analisar requisições JSON
 app.use(express.json());
 
-app.get('/verify-token', verifyToken, (req, res) => {
+app.get('/api/verify-token', verifyToken, (req, res) => {
   res.status(200).json({ message: 'Token válido', user: req.user });
 });
 
