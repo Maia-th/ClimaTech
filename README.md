@@ -5,6 +5,7 @@ Este projeto está em desenvolvimento ativo. Todas as novas funcionalidades e co
 <img alt='Fluxo do GitFlow' src='.github/assets/gitFlow.png'/>
 
 - [Estrutura do Projeto](.github/docs/Geral.md)
+- [Documentação da API](.github/docs/API-Info.md)
 - [Template de Pull Request](.github/docs/pull-request-template.md)
 
 ## Requisitos do Ambiente
@@ -12,6 +13,7 @@ Este projeto está em desenvolvimento ativo. Todas as novas funcionalidades e co
 Para rodar o projeto localmente, certifique-se de ter a seguinte ferramenta instalada:
 
 - Node.js >= 20.18.0
+- MySQL >= 8.x ou outro banco de dados compatível
 - Extensão Live Server no VS Code
 
 ## Instalação
@@ -29,14 +31,24 @@ cd ClimaTech
 npm install
 ```
 
-## Suba o Banco de Dados
+## Suba o banco de dados:
 
-- ⚠️ Em Breve!
+1. Crie o banco de dados:
+
+```sql
+CREATE DATABASE ClimaTech;
+```
+
+2. Importe o esquema do banco de dados:
+
+```bash
+mysql -u seu_usuario -p ClimaTech < ClimaTech/src/api/backup/ClimaTech.sql;
+```
 
 ## Configure o arquivo .env:
 
-- Copie o arquivo `.env.example` e renomeie para `.env`
-- Defina as variáveis de ambiente como o banco de dados, serviços de cache e outras integrações.
+- Copie o arquivo `.env.example` e renomeie para `.env`.
+- Defina as variáveis de ambiente.
 
 ## Iniciar o Backend
 
@@ -104,4 +116,4 @@ git branch -d feature/nome-da-feature
 
 ## Bibliotecas
 
-- ⚠️ Em Breve!
+- [Axios - HTTP Client](https://axios-http.com/)

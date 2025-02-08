@@ -70,7 +70,10 @@
 - Contém arquivos de configuração, como configuração de banco de dados e variáveis de ambiente.
 - Ex: `dbConfig.js`, `appConfig.js`.
 
-#### 7. **Arquivo `index.js`**
+#### 7. **Pasta `backup/`**
+- Contém o arquivo do banco de dados MySQL.
+
+#### 8. **Arquivo `index.js`**
 - Ponto de entrada do servidor Express.
 - Configura o servidor e define as rotas principais.
 
