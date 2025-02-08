@@ -105,7 +105,7 @@
             <span class="text-gray-800 text-4xl font-semibold">ClimaTech</span>
           </div>
           <span class="mb-4">Acesse sua Conta:</span>
-          <form onsubmit="handleSubmit(event)">
+          <form id="login-form">
             <div class="mb-4">
               <label for="email">Usuário</label>
               <input id="email" type="email"
@@ -156,12 +156,15 @@
     const password = document.getElementById('password').value;
 
     try {
-      await userService.login(email, password)
-      alert('Login realizado com sucesso!');
+      const data = await userService.login(email, password);
+      alert('Login realizado com sucesso! Token: ' + data.token);
     } catch (error) {
-      alert(error);
+      alert('Erro ao realizar login: ' + error.message);
     }
   }
+
+  // Adiciona o listener de evento ao formulário
+  document.getElementById('login-form').addEventListener('submit', handleSubmit);
 </script>
 
 </html>
