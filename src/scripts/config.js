@@ -1,0 +1,130 @@
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+    return null;
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+    const token = getCookie('access_token');
+
+    if (token) {
+        try {
+            const decoded = jwt_decode(token);
+            const userId = decoded.id;
+
+            const usernameInput = document.getElementById('username');
+            const emailInput = document.getElementById('email');
+            const currentPasswordInput = document.getElementById('current-password');
+            const newPasswordInput = document.getElementById('new-password');
+            const confirmPasswordInput = document.getElementById('confirm-password');
+            const cancelButton = document.querySelector('.cancel');
+            const confirmButton = document.querySelector('.confirm');
+
+            let originalUsername = '';
+
+            if (usernameInput && emailInput) {
+                emailInput.value = decoded.email || '';
+                usernameInput.value = decoded.name || '';
+                originalUsername = usernameInput.value;
+            }
+
+            const response = await fetch(`http://127.0.0.1:3000/api/usuarios/${userId}`, {
+                method: 'GET',
+                headers: {
+                    'Authorization': `Bearer ${token}`,
+                },
+            });
+
+            if (response.ok) {
+                const userData = await response.json();
+                if (userData.name) {
+                    usernameInput.value = userData.name;
+                    originalUsername = userData.name;
+                }
+                if (userData.email) {
+                    emailInput.value = userData.email;
+                }
+            }
+
+            cancelButton.addEventListener('click', () => {
+                usernameInput.value = originalUsername;
+                currentPasswordInput.value = '';
+                newPasswordInput.value = '';
+                confirmPasswordInput.value = '';
+            });
+
+            confirmButton.addEventListener('click', async (event) => {
+                event.preventDefault();
+
+                if (newPasswordInput.value !== confirmPasswordInput.value) {
+                    showModal('../components/modalUpdateFalha.html');
+                    return;
+                }
+
+                const updatedData = {
+                    name: usernameInput.value,
+                };
+
+                if (newPasswordInput.value) {
+                    updatedData.password = newPasswordInput.value;
+                }
+
+                const updateResponse = await fetch(`http://127.0.0.1:3000/api/usuarios/${userId}`, {
+                    method: 'PUT',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`,
+                    },
+                    body: JSON.stringify(updatedData),
+                });
+
+                if (updateResponse.ok) {
+                    showModal('../components/modalUpdateSucesso.html');
+                    originalUsername = usernameInput.value;
+                    currentPasswordInput.value = '';
+                    newPasswordInput.value = '';
+                    confirmPasswordInput.value = '';
+                } else {
+                    showModal('../components/modalUpdateFalha.html');
+                }
+            });
+
+        } catch (error) {
+            console.error("Erro ao decodificar o token:", error);
+        }
+    }
+});
+
+async function showModal(modalPath) {
+    try {
+        const response = await fetch(modalPath);
+        if (!response.ok) throw new Error('Erro ao carregar modal');
+
+        const modalHTML = await response.text();
+        
+        let modalContainer = document.getElementById('modal-container');
+        
+        if (!modalContainer) {
+            modalContainer = document.createElement('div');
+            modalContainer.id = 'modal-container';
+            document.body.appendChild(modalContainer);
+        }
+
+        modalContainer.innerHTML = modalHTML;
+
+        const modalOverlay = modalContainer.querySelector('.modal-overlay');
+        if (modalOverlay) {
+            modalOverlay.style.display = 'flex';
+        }
+
+        const closeButton = modalContainer.querySelector('.modal-button');
+        if (closeButton) {
+            closeButton.addEventListener('click', () => {
+                modalContainer.innerHTML = '';
+            });
+        }
+    } catch (error) {
+        console.error('Erro ao carregar modal:', error);
+    }
+}
