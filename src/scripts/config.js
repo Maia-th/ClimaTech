@@ -132,3 +132,105 @@ async function showModal(modalPath) {
     }
 }
 
+//configurações usuarios
+document.addEventListener("DOMContentLoaded", async () => {
+    const token = getCookie("access_token"); // Se precisar de autenticação
+    const tabelaUsuarios = document.querySelector("#usuarios tbody");
+
+    async function carregarUsuarios() {
+        try {
+            const response = await fetch("http://127.0.0.1:3000/api/usuarios", {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}` // Se necessário
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error("Erro ao buscar usuários");
+            }
+
+            const usuarios = await response.json();
+            tabelaUsuarios.innerHTML = ""; // Limpa a tabela antes de carregar
+
+            usuarios.forEach(usuario => {
+                const tr = document.createElement("tr");
+                tr.classList.add("border-b");
+
+                tr.innerHTML = `
+                    <td class="py-3 px-4 text-center">${usuario.name}</td>
+                    <td class="py-3 px-4 text-center">${usuario.email}</td>
+                    <td class="py-3 px-4 text-center">${usuario.access}</td>
+                    <td class="py-3 px-4">
+                        <div class="flex items-center justify-center space-x-4">
+                            <span class="fas fa-lock text-gray-600 cursor-pointer hover:text-yellow-500 alterar-permissao" data-id="${usuario.idUsers}"></span>
+                            <span class="fas fa-trash-alt text-gray-600 cursor-pointer hover:text-red-500 excluir-usuario" data-id="${usuario.idUsers}"></span>
+                        </div>
+                    </td>
+                `;
+
+                tabelaUsuarios.appendChild(tr);
+            });
+
+            // Adiciona eventos aos ícones de exclusão e alteração de permissão
+            document.querySelectorAll(".excluir-usuario").forEach(botao => {
+                botao.addEventListener("click", () => excluirUsuario(botao.dataset.id));
+            });
+
+            document.querySelectorAll(".alterar-permissao").forEach(botao => {
+                botao.addEventListener("click", () => alterarPermissao(botao.dataset.id));
+            });
+
+        } catch (error) {
+            console.error("Erro ao carregar usuários:", error);
+        }
+    }
+
+    async function excluirUsuario(id) {
+        if (!confirm("Tem certeza que deseja excluir este usuário?")) return;
+
+        try {
+            const response = await fetch(`http://127.0.0.1:3000/api/usuarios/${id}`, {
+                method: "DELETE",
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error("Erro ao excluir usuário");
+            }
+
+            carregarUsuarios(); // Recarregar tabela após exclusão
+        } catch (error) {
+            console.error("Erro ao excluir usuário:", error);
+        }
+    }
+
+    async function alterarPermissao(id) {
+        try {
+            const novaPermissao = prompt("Nova permissão (root, user, etc.):");
+            if (!novaPermissao) return;
+
+            const response = await fetch(`http://127.0.0.1:3000/api/usuarios/${id}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
+                body: JSON.stringify({ access: novaPermissao })
+            });
+
+            if (!response.ok) {
+                throw new Error("Erro ao alterar permissão");
+            }
+
+            carregarUsuarios(); // Atualiza tabela
+        } catch (error) {
+            console.error("Erro ao alterar permissão:", error);
+        }
+    }
+
+    carregarUsuarios();
+});
