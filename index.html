@@ -10,8 +10,8 @@
     <link rel="stylesheet" href="src/styles/global.css">
     <link rel="stylesheet" href="src/styles/sectionContatos.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
-    <link rel="stylesheet" href="src/styles/footer.css">
     <link rel="stylesheet" href="src/styles/buttonLogin.css">
+    <link rel="stylesheet" href="src/styles/carrossel.css">
     <script src="src/scripts/mobile.js"></script>
 </head>
 
@@ -95,51 +95,93 @@
                 </nav>
             </div>
         </div>
-        </div>
     </header>
     <main>
         <section id="home"
-            class="flex flex-col pt-24 h-screen bg-center bg-no-repeat bg-cover text-white flex items-center justify-center"
-            style="background-image: url(src/assets/images/bgHome.jpg);">
+            class="flex flex-col pt-16 bg-center bg-no-repeat bg-cover text-white flex items-center justify-center"
+            style="background-image: url(src/assets/images/bgHome.jpg); height: 100dvh;">
             <div class="container mx-auto text-center">
                 <h1 class="text-white text-2xl sm:text-4xl md:text-6xl font-bold uppercase">Bem-vindo a ClimaTech
                 </h1>
-                <p class="text-white text-base sm:text-lg md:text-2xl uppercase mt-4 px-2">Transformando seu ambiente
+                <p class="text-white text-base sm:text-lg md:text-2xl font-semibold uppercase mt-4 px-2">Transformando
+                    seu ambiente
                     com conforto e eficiência</p>
             </div>
-            <div class="w-full h-60 mt-20 bg-gray-900 bg-opacity-50 hidden lg:block">
-                <div class="container mx-auto flex items-center justify-center h-full">
-
-                    <div class="flex mx-6 items-center bg-gray-900 shadow-lg rounded p-4" style="width: 27.5rem;">
-                        <img src="src/assets/images/servico1.jpg" alt="imagemIlustrativa"
-                            class="w-32 h-32 object-cover rounded-lg mr-4">
-                        <div>
-                            <h2 class="text-lg font-bold">10% Lorem ipsum dolor sit amet!</h2>
-                            <p class="text-base font-medium mt-2">Promoção válida até XX/XX/XXXX.</p>
-                            <span class="flex justify-end text-yellow-500 font-bold cursor-pointer">Condições</span>
+            <div class="w-full h-60 mt-12 sm:mt-20 bg-gray-900 bg-opacity-50 block">
+                <div class="container mx-auto flex items-center justify-center h-full overflow-hidden">
+                    <div class="carousel">
+                        <div class="carousel-track">
+                            <div class="carousel-item flex mx-2 sm:mx-6 items-center bg-gray-900 shadow-lg rounded p-4">
+                                <img src="src/assets/images/empresa.jpg" alt="Sobre a Empresa"
+                                    class="w-32 h-32 hidden sm:block object-cover rounded-lg mr-4">
+                                <div>
+                                    <h2 class="text-lg font-bold">Conheça nossa empresa</h2>
+                                    <p class="text-base font-medium mt-2">Saiba mais sobre nossa história e valores.</p>
+                                    <span class="flex justify-end text-yellow-500 font-bold cursor-pointer"><a
+                                            href="src/pages/sobre.html#sobre-nos">Saiba
+                                            mais</a></span>
+                                </div>
+                            </div>
+                            <div class="carousel-item flex mx-2 sm:mx-6 items-center bg-gray-900 shadow-lg rounded p-4">
+                                <img src="src/assets/images/servicos.jpg" alt="Nossos Serviços"
+                                    class="w-32 h-32 hidden sm:block object-cover rounded-lg mr-4">
+                                <div>
+                                    <h2 class="text-lg font-bold">Nossos Serviços</h2>
+                                    <p class="text-base font-medium mt-2">Descubra os serviços que oferecemos para você.
+                                    </p>
+                                    <span class="flex justify-end text-yellow-500 font-bold cursor-pointer"><a
+                                            href="#servicos">Ver
+                                            serviços</a></span>
+                                </div>
+                            </div>
+                            <div class="carousel-item flex mx-2 sm:mx-6 items-center bg-gray-900 shadow-lg rounded p-4">
+                                <img src="src/assets/images/contato.jpg" alt="Entre em Contato"
+                                    class="w-32 h-32 hidden sm:block object-cover rounded-lg mr-4">
+                                <div>
+                                    <h2 class="text-lg font-bold">Entre em Contato</h2>
+                                    <p class="text-base font-medium mt-2">Estamos aqui para ajudar. Fale conosco!</p>
+                                    <span class="flex justify-end text-yellow-500 font-bold cursor-pointer"><a
+                                            href="https://wa.me/5531987748448" target="_blank"
+                                            rel="noopener noreferrer">Contato</a></span>
+                                </div>
+                            </div>
+                            <!-- Duplicando os itens para criar o efeito infinito -->
+                            <div class="carousel-item flex mx-2 sm:mx-6 items-center bg-gray-900 shadow-lg rounded p-4">
+                                <img src="src/assets/images/empresa.jpg" alt="Sobre a Empresa"
+                                    class="w-32 h-32 hidden sm:block object-cover rounded-lg mr-4">
+                                <div>
+                                    <h2 class="text-lg font-bold">Conheça nossa empresa</h2>
+                                    <p class="text-base font-medium mt-2">Saiba mais sobre nossa história e valores.</p>
+                                    <span class="flex justify-end text-yellow-500 font-bold cursor-pointer"><a
+                                            href="src/pages/sobre.html#sobre-nos">Saiba
+                                            mais</a></span>
+                                </div>
+                            </div>
+                            <div class="carousel-item flex mx-2 sm:mx-6 items-center bg-gray-900 shadow-lg rounded p-4">
+                                <img src="src/assets/images/servicos.jpg" alt="Nossos Serviços"
+                                    class="w-32 h-32 hidden sm:block object-cover rounded-lg mr-4">
+                                <div>
+                                    <h2 class="text-lg font-bold">Nossos Serviços</h2>
+                                    <p class="text-base font-medium mt-2">Descubra os serviços que oferecemos para você.
+                                    </p>
+                                    <span class="flex justify-end text-yellow-500 font-bold cursor-pointer"><a
+                                            href="#servicos">Ver
+                                            serviços</a></span>
+                                </div>
+                            </div>
+                            <div class="carousel-item flex mx-2 sm:mx-6 items-center bg-gray-900 shadow-lg rounded p-4">
+                                <img src="src/assets/images/contato.jpg" alt="Entre em Contato"
+                                    class="w-32 h-32 hidden sm:block object-cover rounded-lg mr-4">
+                                <div>
+                                    <h2 class="text-lg font-bold">Entre em Contato</h2>
+                                    <p class="text-base font-medium mt-2">Estamos aqui para ajudar. Fale conosco!</p>
+                                    <span class="flex justify-end text-yellow-500 font-bold cursor-pointer"><a
+                                            href="https://wa.me/5531987748448" target="_blank"
+                                            rel="noopener noreferrer">Contato</a></span>
+                                </div>
+                            </div>
                         </div>
                     </div>
-
-                    <div class="flex mx-6 items-center bg-gray-900 shadow-lg rounded p-4" style="width: 27.5rem;">
-                        <img src="src/assets/images/servico2.png" alt="imagemIlustrativa"
-                            class="w-32 h-32 object-cover rounded-lg mr-4">
-                        <div>
-                            <h2 class="text-lg font-bold">20% Lorem ipsum dolor sit amet!</h2>
-                            <p class="text-base font-medium mt-2">Promoção válida até XX/XX/XXXX.</p>
-                            <span class="flex justify-end text-yellow-500 font-bold cursor-pointer">Condições</span>
-                        </div>
-                    </div>
-
-                    <div class="flex mx-6 items-center bg-gray-900 shadow-lg rounded p-4" style="width: 27.5rem;">
-                        <img src="src/assets/images/servico3.jpeg" alt="imagemIlustrativa"
-                            class="w-32 h-32 object-cover rounded-lg mr-4">
-                        <div>
-                            <h2 class="text-lg font-bold">30% Lorem ipsum dolor sit amet!</h2>
-                            <p class="text-base font-medium mt-2">Promoção válida até XX/XX/XXXX.</p>
-                            <span class="flex justify-end text-yellow-500 font-bold cursor-pointer">Condições</span>
-                        </div>
-                    </div>
-
                 </div>
             </div>
         </section>
@@ -488,6 +530,31 @@
         </div>
     </footer>
     <script src="src/scripts/modalServicos.js"></script>
+    <!-- JS do Carrossel - Home -->
+    <script>
+        const track = document.querySelector('.carousel-track');
+        const items = document.querySelectorAll('.carousel-item');
+        const itemWidth = items[0].offsetWidth + parseInt(window.getComputedStyle(items[0]).marginRight) * 2;
+        let index = 0;
+
+        function moveToNextSlide() {
+            index++;
+            track.style.transform = `translateX(-${index * itemWidth}px)`;
+
+            if (index >= items.length / 2) {
+                setTimeout(() => {
+                    track.style.transition = 'none';
+                    index = 0;
+                    track.style.transform = `translateX(0)`;
+                    setTimeout(() => {
+                        track.style.transition = 'transform 0.5s ease-in-out';
+                    }, 50);
+                }, 1000);
+            }
+        }
+
+        setInterval(moveToNextSlide, 3000);
+    </script>
 </body>
 
 </html>
