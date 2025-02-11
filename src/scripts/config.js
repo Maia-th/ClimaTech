@@ -1,3 +1,4 @@
+//Obtem o valor dos tokens no cookie
 function getCookie(name) {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
@@ -5,6 +6,7 @@ function getCookie(name) {
     return null;
 }
 
+//Obtem o token do Cookie, decodifica, preenche a pag com os dados do usuario...
 document.addEventListener('DOMContentLoaded', async () => {
     const token = getCookie('access_token');
 
@@ -96,6 +98,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 });
 
+
 async function showModal(modalPath) {
     try {
         const response = await fetch(modalPath);
@@ -128,3 +131,4 @@ async function showModal(modalPath) {
         console.error('Erro ao carregar modal:', error);
     }
 }
+

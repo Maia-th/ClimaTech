@@ -51,12 +51,12 @@ hr {
   font-size: 0.8rem;
 }
 
-.form-actions .cancel {
+.form-actions .cancel, .adicionar {
   background-color: #F59E0B;
   color: white;
 }
 
-.form-actions .cancel:hover {
+.form-actions .cancel:hover .adicionar:hover {
   background-color: #e6950b;
 }
 
