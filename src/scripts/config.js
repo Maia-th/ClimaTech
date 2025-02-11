@@ -11,6 +11,8 @@ document.addEventListener('DOMContentLoaded', async () => {
     if (token) {
         try {
             const decoded = jwt_decode(token);
+            const userId = decoded.id;
+
             const usernameInput = document.getElementById('username');
             const emailInput = document.getElementById('email');
             const currentPasswordInput = document.getElementById('current-password');
@@ -26,8 +28,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                 usernameInput.value = decoded.name || '';
                 originalUsername = usernameInput.value;
             }
-
-            const userId = decoded.id;
 
             const response = await fetch(`http://127.0.0.1:3000/api/usuarios/${userId}`, {
                 method: 'GET',
@@ -58,15 +58,17 @@ document.addEventListener('DOMContentLoaded', async () => {
                 event.preventDefault();
 
                 if (newPasswordInput.value !== confirmPasswordInput.value) {
-                    alert("As senhas não coincidem!");
+                    showModal('../components/modalUpdateFalha.html');
                     return;
                 }
 
                 const updatedData = {
                     name: usernameInput.value,
-                    currentPassword: currentPasswordInput.value,
-                    newPassword: newPasswordInput.value || undefined,
                 };
+
+                if (newPasswordInput.value) {
+                    updatedData.password = newPasswordInput.value;
+                }
 
                 const updateResponse = await fetch(`http://127.0.0.1:3000/api/usuarios/${userId}`, {
                     method: 'PUT',
@@ -78,13 +80,13 @@ document.addEventListener('DOMContentLoaded', async () => {
                 });
 
                 if (updateResponse.ok) {
-                    alert("Dados atualizados com sucesso!");
+                    showModal('../components/modalUpdateSucesso.html');
                     originalUsername = usernameInput.value;
                     currentPasswordInput.value = '';
                     newPasswordInput.value = '';
                     confirmPasswordInput.value = '';
                 } else {
-                    alert("Erro ao atualizar os dados.");
+                    showModal('../components/modalUpdateFalha.html');
                 }
             });
 
@@ -93,3 +95,36 @@ document.addEventListener('DOMContentLoaded', async () => {
         }
     }
 });
+
+async function showModal(modalPath) {
+    try {
+        const response = await fetch(modalPath);
+        if (!response.ok) throw new Error('Erro ao carregar modal');
+
+        const modalHTML = await response.text();
+        
+        let modalContainer = document.getElementById('modal-container');
+        
+        if (!modalContainer) {
+            modalContainer = document.createElement('div');
+            modalContainer.id = 'modal-container';
+            document.body.appendChild(modalContainer);
+        }
+
+        modalContainer.innerHTML = modalHTML;
+
+        const modalOverlay = modalContainer.querySelector('.modal-overlay');
+        if (modalOverlay) {
+            modalOverlay.style.display = 'flex';
+        }
+
+        const closeButton = modalContainer.querySelector('.modal-button');
+        if (closeButton) {
+            closeButton.addEventListener('click', () => {
+                modalContainer.innerHTML = '';
+            });
+        }
+    } catch (error) {
+        console.error('Erro ao carregar modal:', error);
+    }
+}
