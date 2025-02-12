@@ -134,8 +134,10 @@ async function showModal(modalPath) {
 
 //configurações usuarios
 document.addEventListener("DOMContentLoaded", async () => {
-    const token = getCookie("access_token"); // Se precisar de autenticação
+    const token = getCookie("access_token");
     const tabelaUsuarios = document.querySelector("#usuarios tbody");
+    
+    let usuarioIdParaExcluir = null; // Variável para armazenar o ID do usuário a ser excluído
 
     async function carregarUsuarios() {
         try {
@@ -143,7 +145,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 method: "GET",
                 headers: {
                     "Content-Type": "application/json",
-                    "Authorization": `Bearer ${token}` // Se necessário
+                    "Authorization": `Bearer ${token}`
                 }
             });
 
@@ -152,7 +154,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
 
             const usuarios = await response.json();
-            tabelaUsuarios.innerHTML = ""; // Limpa a tabela antes de carregar
+            tabelaUsuarios.innerHTML = ""; 
 
             usuarios.forEach(usuario => {
                 const tr = document.createElement("tr");
@@ -173,9 +175,8 @@ document.addEventListener("DOMContentLoaded", async () => {
                 tabelaUsuarios.appendChild(tr);
             });
 
-            // Adiciona eventos aos ícones de exclusão e alteração de permissão
             document.querySelectorAll(".excluir-usuario").forEach(botao => {
-                botao.addEventListener("click", () => excluirUsuario(botao.dataset.id));
+                botao.addEventListener("click", () => mostrarModalExcluir(botao.dataset.id));
             });
 
             document.querySelectorAll(".alterar-permissao").forEach(botao => {
@@ -187,11 +188,21 @@ document.addEventListener("DOMContentLoaded", async () => {
         }
     }
 
-    async function excluirUsuario(id) {
-        if (!confirm("Tem certeza que deseja excluir este usuário?")) return;
+    function mostrarModalExcluir(id) {
+        usuarioIdParaExcluir = id; // Armazena o ID do usuário para exclusão
+        document.getElementById("modalExcluir").classList.remove("hidden");
+    }
+
+    function esconderModalExcluir() {
+        usuarioIdParaExcluir = null;
+        document.getElementById("modalExcluir").classList.add("hidden");
+    }
+
+    async function excluirUsuario() {
+        if (!usuarioIdParaExcluir) return;
 
         try {
-            const response = await fetch(`http://127.0.0.1:3000/api/usuarios/${id}`, {
+            const response = await fetch(`http://127.0.0.1:3000/api/usuarios/${usuarioIdParaExcluir}`, {
                 method: "DELETE",
                 headers: {
                     "Authorization": `Bearer ${token}`
@@ -202,10 +213,16 @@ document.addEventListener("DOMContentLoaded", async () => {
                 throw new Error("Erro ao excluir usuário");
             }
 
-            carregarUsuarios(); // Recarregar tabela após exclusão
+            esconderModalExcluir();
+            carregarUsuarios(); // Atualiza a lista após a exclusão
         } catch (error) {
             console.error("Erro ao excluir usuário:", error);
         }
+    }
+
+    function configurarModal() {
+        document.getElementById("cancelarExclusao").addEventListener("click", esconderModalExcluir);
+        document.getElementById("confirmarExclusao").addEventListener("click", excluirUsuario);
     }
 
     async function alterarPermissao(id) {
@@ -226,11 +243,13 @@ document.addEventListener("DOMContentLoaded", async () => {
                 throw new Error("Erro ao alterar permissão");
             }
 
-            carregarUsuarios(); // Atualiza tabela
+            carregarUsuarios(); 
         } catch (error) {
             console.error("Erro ao alterar permissão:", error);
         }
     }
 
+    configurarModal();
     carregarUsuarios();
 });
+
