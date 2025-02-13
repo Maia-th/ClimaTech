@@ -132,12 +132,13 @@ async function showModal(modalPath) {
     }
 }
 
-//configurações usuarios
+//pagina de usuarios
 document.addEventListener("DOMContentLoaded", async () => {
     const token = getCookie("access_token");
     const tabelaUsuarios = document.querySelector("#usuarios tbody");
 
-    let usuarioIdParaExcluir = null;
+    let usuarioIdParaExcluir = null;  // Variável para excluir o usuário
+    let usuarioIdParaEditar = null;  
 
     document.querySelector(".adicionar").addEventListener("click", () => {
         document.getElementById("modalCadastro").classList.remove("hidden");
@@ -225,7 +226,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             });
 
             document.querySelectorAll(".alterar-permissao").forEach(botao => {
-                botao.addEventListener("click", () => alterarPermissao(botao.dataset.id));
+                botao.addEventListener("click", () => editarUsuario(botao.dataset.id)); 
             });
 
         } catch (error) {
@@ -269,6 +270,60 @@ document.addEventListener("DOMContentLoaded", async () => {
         document.getElementById("cancelarExclusao").addEventListener("click", esconderModalExcluir);
         document.getElementById("confirmarExclusao").addEventListener("click", excluirUsuario);
     }
+
+    function editarUsuario(id) {
+        usuarioIdParaEditar = id; 
+
+        fetch(`http://127.0.0.1:3000/api/usuarios/${usuarioIdParaEditar}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            }
+        })
+        .then(response => response.json())
+        .then(usuario => {
+            document.getElementById("nomeUsuarioEditar").value = usuario.name;
+            document.getElementById("emailUsuarioEditar").value = usuario.email;
+            document.getElementById("permissaoUsuarioEditar").value = usuario.access;
+            document.getElementById("modalEditar").classList.remove("hidden");
+        })
+        .catch(error => console.error("Erro ao carregar dados do usuário:", error));
+    }
+
+    document.getElementById("salvarEdicao").addEventListener("click", async () => {
+        const nome = document.getElementById("nomeUsuarioEditar").value;
+        const email = document.getElementById("emailUsuarioEditar").value;
+        const permissao = document.getElementById("permissaoUsuarioEditar").value;
+
+        try {
+            const response = await fetch(`http://127.0.0.1:3000/api/usuarios/${usuarioIdParaEditar}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                    name: nome,
+                    email: email,
+                    access: permissao
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error("Erro ao editar usuário");
+            }
+
+            document.getElementById("modalEditar").classList.add("hidden");
+            carregarUsuarios();
+        } catch (error) {
+            console.error("Erro ao editar usuário:", error);
+        }
+    });
+
+    document.getElementById("cancelarEdicao").addEventListener("click", () => {
+        document.getElementById("modalEditar").classList.add("hidden");
+    });
 
     configurarModal();
     carregarUsuarios();
