@@ -137,8 +137,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     const token = getCookie("access_token");
     const tabelaUsuarios = document.querySelector("#usuarios tbody");
 
-    let usuarioIdParaExcluir = null;  // Variável para excluir o usuário
-    let usuarioIdParaEditar = null;  
+    let usuarioIdParaExcluir = null;  
+    let usuarioIdParaEditar = null;
 
     document.querySelector(".adicionar").addEventListener("click", () => {
         document.getElementById("modalCadastro").classList.remove("hidden");
@@ -151,7 +151,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     document.getElementById("cadastrarUsuario").addEventListener("click", async () => {
         const nome = document.getElementById("nomeUsuario").value;
         const email = document.getElementById("emailUsuario").value;
-        const senha = document.getElementById("senhaUsuario").value || "12345678"; 
+        const senha = document.getElementById("senhaUsuario").value || "12345678";
         const permissao = document.getElementById("permissaoUsuario").value;
 
         if (!nome || !email) {
@@ -200,7 +200,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
 
             const usuarios = await response.json();
-            tabelaUsuarios.innerHTML = ""; 
+            tabelaUsuarios.innerHTML = "";
 
             usuarios.forEach(usuario => {
                 const tr = document.createElement("tr");
@@ -272,7 +272,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     function editarUsuario(id) {
-        usuarioIdParaEditar = id; 
+        usuarioIdParaEditar = id;
 
         fetch(`http://127.0.0.1:3000/api/usuarios/${usuarioIdParaEditar}`, {
             method: "GET",
@@ -291,10 +291,31 @@ document.addEventListener("DOMContentLoaded", async () => {
         .catch(error => console.error("Erro ao carregar dados do usuário:", error));
     }
 
+    document.getElementById("resetarSenha").addEventListener("click", () => {
+        fetch(`http://127.0.0.1:3000/api/usuarios/${usuarioIdParaEditar}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                password: "12345678"
+            })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Erro ao resetar a senha");
+            }
+            console.log("Senha resetada para 12345678");
+        })
+        .catch(error => console.error("Erro ao resetar a senha:", error));
+    });
+
     document.getElementById("salvarEdicao").addEventListener("click", async () => {
         const nome = document.getElementById("nomeUsuarioEditar").value;
         const email = document.getElementById("emailUsuarioEditar").value;
         const permissao = document.getElementById("permissaoUsuarioEditar").value;
+        const senha = "12345678"; 
 
         try {
             const response = await fetch(`http://127.0.0.1:3000/api/usuarios/${usuarioIdParaEditar}`, {
@@ -306,6 +327,7 @@ document.addEventListener("DOMContentLoaded", async () => {
                 body: JSON.stringify({
                     name: nome,
                     email: email,
+                    password: senha,
                     access: permissao
                 })
             });
