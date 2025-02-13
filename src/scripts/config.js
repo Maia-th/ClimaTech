@@ -1,3 +1,4 @@
+//Obtem o valor dos tokens no cookie
 function getCookie(name) {
     const value = `; ${document.cookie}`;
     const parts = value.split(`; ${name}=`);
@@ -5,6 +6,7 @@ function getCookie(name) {
     return null;
 }
 
+//Obtem o token do Cookie, decodifica, preenche a pag com os dados do usuario...
 document.addEventListener('DOMContentLoaded', async () => {
     const token = getCookie('access_token');
 
@@ -96,6 +98,7 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 });
 
+
 async function showModal(modalPath) {
     try {
         const response = await fetch(modalPath);
@@ -128,3 +131,222 @@ async function showModal(modalPath) {
         console.error('Erro ao carregar modal:', error);
     }
 }
+
+//pagina de usuarios
+document.addEventListener("DOMContentLoaded", async () => {
+    const token = getCookie("access_token");
+    const tabelaUsuarios = document.querySelector("#usuarios tbody");
+
+    let usuarioIdParaExcluir = null;  
+    let usuarioIdParaEditar = null;
+
+    document.querySelector(".adicionar").addEventListener("click", () => {
+        document.getElementById("modalCadastro").classList.remove("hidden");
+    });
+
+    document.getElementById("cancelarCadastro").addEventListener("click", () => {
+        document.getElementById("modalCadastro").classList.add("hidden");
+    });
+
+    document.getElementById("cadastrarUsuario").addEventListener("click", async () => {
+        const nome = document.getElementById("nomeUsuario").value;
+        const email = document.getElementById("emailUsuario").value;
+        const senha = document.getElementById("senhaUsuario").value || "12345678";
+        const permissao = document.getElementById("permissaoUsuario").value;
+
+        if (!nome || !email) {
+            alert("Por favor, preencha todos os campos obrigatórios.");
+            return;
+        }
+
+        try {
+            const response = await fetch("http://127.0.0.1:3000/api/usuarios", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                    name: nome,
+                    email: email,
+                    password: senha,
+                    access: permissao
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error("Erro ao cadastrar usuário");
+            }
+
+            document.getElementById("modalCadastro").classList.add("hidden");
+            carregarUsuarios();
+        } catch (error) {
+            console.error("Erro ao cadastrar usuário:", error);
+        }
+    });
+
+    async function carregarUsuarios() {
+        try {
+            const response = await fetch("http://127.0.0.1:3000/api/usuarios", {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error("Erro ao buscar usuários");
+            }
+
+            const usuarios = await response.json();
+            tabelaUsuarios.innerHTML = "";
+
+            usuarios.forEach(usuario => {
+                const tr = document.createElement("tr");
+                tr.classList.add("border-b");
+
+                tr.innerHTML = `
+                    <td class="py-3 px-4 text-center">${usuario.name}</td>
+                    <td class="py-3 px-4 text-center">${usuario.email}</td>
+                    <td class="py-3 px-4 text-center">${usuario.access}</td>
+                    <td class="py-3 px-4">
+                        <div class="flex items-center justify-center space-x-4">
+                            <span class="fas fa-lock text-gray-600 cursor-pointer hover:text-yellow-500 alterar-permissao" data-id="${usuario.idUsers}"></span>
+                            <span class="fas fa-trash-alt text-gray-600 cursor-pointer hover:text-red-500 excluir-usuario" data-id="${usuario.idUsers}"></span>
+                        </div>
+                    </td>
+                `;
+
+                tabelaUsuarios.appendChild(tr);
+            });
+
+            document.querySelectorAll(".excluir-usuario").forEach(botao => {
+                botao.addEventListener("click", () => mostrarModalExcluir(botao.dataset.id));
+            });
+
+            document.querySelectorAll(".alterar-permissao").forEach(botao => {
+                botao.addEventListener("click", () => editarUsuario(botao.dataset.id)); 
+            });
+
+        } catch (error) {
+            console.error("Erro ao carregar usuários:", error);
+        }
+    }
+
+    function mostrarModalExcluir(id) {
+        usuarioIdParaExcluir = id;
+        document.getElementById("modalExcluir").classList.remove("hidden");
+    }
+
+    function esconderModalExcluir() {
+        usuarioIdParaExcluir = null;
+        document.getElementById("modalExcluir").classList.add("hidden");
+    }
+
+    async function excluirUsuario() {
+        if (!usuarioIdParaExcluir) return;
+
+        try {
+            const response = await fetch(`http://127.0.0.1:3000/api/usuarios/${usuarioIdParaExcluir}`, {
+                method: "DELETE",
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error("Erro ao excluir usuário");
+            }
+
+            esconderModalExcluir();
+            carregarUsuarios();
+        } catch (error) {
+            console.error("Erro ao excluir usuário:", error);
+        }
+    }
+
+    function configurarModal() {
+        document.getElementById("cancelarExclusao").addEventListener("click", esconderModalExcluir);
+        document.getElementById("confirmarExclusao").addEventListener("click", excluirUsuario);
+    }
+
+    function editarUsuario(id) {
+        usuarioIdParaEditar = id;
+
+        fetch(`http://127.0.0.1:3000/api/usuarios/${usuarioIdParaEditar}`, {
+            method: "GET",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            }
+        })
+        .then(response => response.json())
+        .then(usuario => {
+            document.getElementById("nomeUsuarioEditar").value = usuario.name;
+            document.getElementById("emailUsuarioEditar").value = usuario.email;
+            document.getElementById("permissaoUsuarioEditar").value = usuario.access;
+            document.getElementById("modalEditar").classList.remove("hidden");
+        })
+        .catch(error => console.error("Erro ao carregar dados do usuário:", error));
+    }
+
+    document.getElementById("resetarSenha").addEventListener("click", () => {
+        fetch(`http://127.0.0.1:3000/api/usuarios/${usuarioIdParaEditar}`, {
+            method: "PUT",
+            headers: {
+                "Content-Type": "application/json",
+                "Authorization": `Bearer ${token}`
+            },
+            body: JSON.stringify({
+                password: "12345678"
+            })
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error("Erro ao resetar a senha");
+            }
+            console.log("Senha resetada para 12345678");
+        })
+        .catch(error => console.error("Erro ao resetar a senha:", error));
+    });
+
+    document.getElementById("salvarEdicao").addEventListener("click", async () => {
+        const nome = document.getElementById("nomeUsuarioEditar").value;
+        const email = document.getElementById("emailUsuarioEditar").value;
+        const permissao = document.getElementById("permissaoUsuarioEditar").value;
+        const senha = "12345678"; 
+
+        try {
+            const response = await fetch(`http://127.0.0.1:3000/api/usuarios/${usuarioIdParaEditar}`, {
+                method: "PUT",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                    name: nome,
+                    email: email,
+                    password: senha,
+                    access: permissao
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error("Erro ao editar usuário");
+            }
+
+            document.getElementById("modalEditar").classList.add("hidden");
+            carregarUsuarios();
+        } catch (error) {
+            console.error("Erro ao editar usuário:", error);
+        }
+    });
+
+    document.getElementById("cancelarEdicao").addEventListener("click", () => {
+        document.getElementById("modalEditar").classList.add("hidden");
+    });
+
+    configurarModal();
+    carregarUsuarios();
+});
