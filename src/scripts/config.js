@@ -137,6 +137,8 @@ document.addEventListener("DOMContentLoaded", async () => {
     const token = getCookie("access_token");
     const tabelaUsuarios = document.querySelector("#usuarios tbody");
 
+    let usuarioIdParaExcluir = null;
+
     document.querySelector(".adicionar").addEventListener("click", () => {
         document.getElementById("modalCadastro").classList.remove("hidden");
     });
