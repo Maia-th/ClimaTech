@@ -136,8 +136,51 @@ async function showModal(modalPath) {
 document.addEventListener("DOMContentLoaded", async () => {
     const token = getCookie("access_token");
     const tabelaUsuarios = document.querySelector("#usuarios tbody");
-    
-    let usuarioIdParaExcluir = null; // Variável para armazenar o ID do usuário a ser excluído
+
+    document.querySelector(".adicionar").addEventListener("click", () => {
+        document.getElementById("modalCadastro").classList.remove("hidden");
+    });
+
+    document.getElementById("cancelarCadastro").addEventListener("click", () => {
+        document.getElementById("modalCadastro").classList.add("hidden");
+    });
+
+    document.getElementById("cadastrarUsuario").addEventListener("click", async () => {
+        const nome = document.getElementById("nomeUsuario").value;
+        const email = document.getElementById("emailUsuario").value;
+        const senha = document.getElementById("senhaUsuario").value || "12345678"; 
+        const permissao = document.getElementById("permissaoUsuario").value;
+
+        if (!nome || !email) {
+            alert("Por favor, preencha todos os campos obrigatórios.");
+            return;
+        }
+
+        try {
+            const response = await fetch("http://127.0.0.1:3000/api/usuarios", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
+                body: JSON.stringify({
+                    name: nome,
+                    email: email,
+                    password: senha,
+                    access: permissao
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error("Erro ao cadastrar usuário");
+            }
+
+            document.getElementById("modalCadastro").classList.add("hidden");
+            carregarUsuarios();
+        } catch (error) {
+            console.error("Erro ao cadastrar usuário:", error);
+        }
+    });
 
     async function carregarUsuarios() {
         try {
@@ -189,7 +232,7 @@ document.addEventListener("DOMContentLoaded", async () => {
     }
 
     function mostrarModalExcluir(id) {
-        usuarioIdParaExcluir = id; // Armazena o ID do usuário para exclusão
+        usuarioIdParaExcluir = id;
         document.getElementById("modalExcluir").classList.remove("hidden");
     }
 
@@ -214,7 +257,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             }
 
             esconderModalExcluir();
-            carregarUsuarios(); // Atualiza a lista após a exclusão
+            carregarUsuarios();
         } catch (error) {
             console.error("Erro ao excluir usuário:", error);
         }
@@ -225,31 +268,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         document.getElementById("confirmarExclusao").addEventListener("click", excluirUsuario);
     }
 
-    async function alterarPermissao(id) {
-        try {
-            const novaPermissao = prompt("Nova permissão (root, user, etc.):");
-            if (!novaPermissao) return;
-
-            const response = await fetch(`http://127.0.0.1:3000/api/usuarios/${id}`, {
-                method: "PUT",
-                headers: {
-                    "Content-Type": "application/json",
-                    "Authorization": `Bearer ${token}`
-                },
-                body: JSON.stringify({ access: novaPermissao })
-            });
-
-            if (!response.ok) {
-                throw new Error("Erro ao alterar permissão");
-            }
-
-            carregarUsuarios(); 
-        } catch (error) {
-            console.error("Erro ao alterar permissão:", error);
-        }
-    }
-
     configurarModal();
     carregarUsuarios();
 });
-
