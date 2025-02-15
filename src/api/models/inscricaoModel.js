@@ -1,5 +1,5 @@
 const { DataTypes } = require('sequelize');
-const { sequelize } = require('../config/db');  // Ajuste o caminho se necessário
+const { sequelize } = require('../config/db');  
 
 const Inscricao = sequelize.define('Inscricao', {
   idInscricao: {
@@ -13,7 +13,7 @@ const Inscricao = sequelize.define('Inscricao', {
     allowNull: false,
     unique: true, 
   },
-  dataCadastro: {
+  data_cadastro: {
     type: DataTypes.DATE,
     allowNull: false,
     defaultValue: DataTypes.NOW, 

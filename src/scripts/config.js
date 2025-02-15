@@ -6,7 +6,6 @@ function getCookie(name) {
     return null;
 }
 
-//Obtem o token do Cookie, decodifica, preenche a pag com os dados do usuario...
 document.addEventListener('DOMContentLoaded', async () => {
     const token = getCookie('access_token');
 
@@ -105,9 +104,9 @@ async function showModal(modalPath) {
         if (!response.ok) throw new Error('Erro ao carregar modal');
 
         const modalHTML = await response.text();
-        
+
         let modalContainer = document.getElementById('modal-container');
-        
+
         if (!modalContainer) {
             modalContainer = document.createElement('div');
             modalContainer.id = 'modal-container';
@@ -132,12 +131,12 @@ async function showModal(modalPath) {
     }
 }
 
-// aplicação da pagina de usuarios
 document.addEventListener("DOMContentLoaded", async () => {
     const token = getCookie("access_token");
     const tabelaUsuarios = document.querySelector("#usuarios tbody");
+    const inputBuscaNome = document.getElementById("busca-nome");
 
-    let usuarioIdParaExcluir = null;  
+    let usuarioIdParaExcluir = null;
     let usuarioIdParaEditar = null;
 
     document.querySelector(".adicionar").addEventListener("click", () => {
@@ -226,7 +225,7 @@ document.addEventListener("DOMContentLoaded", async () => {
             });
 
             document.querySelectorAll(".alterar-permissao").forEach(botao => {
-                botao.addEventListener("click", () => editarUsuario(botao.dataset.id)); 
+                botao.addEventListener("click", () => editarUsuario(botao.dataset.id));
             });
 
         } catch (error) {
@@ -281,14 +280,14 @@ document.addEventListener("DOMContentLoaded", async () => {
                 "Authorization": `Bearer ${token}`
             }
         })
-        .then(response => response.json())
-        .then(usuario => {
-            document.getElementById("nomeUsuarioEditar").value = usuario.name;
-            document.getElementById("emailUsuarioEditar").value = usuario.email;
-            document.getElementById("permissaoUsuarioEditar").value = usuario.access;
-            document.getElementById("modalEditar").classList.remove("hidden");
-        })
-        .catch(error => console.error("Erro ao carregar dados do usuário:", error));
+            .then(response => response.json())
+            .then(usuario => {
+                document.getElementById("nomeUsuarioEditar").value = usuario.name;
+                document.getElementById("emailUsuarioEditar").value = usuario.email;
+                document.getElementById("permissaoUsuarioEditar").value = usuario.access;
+                document.getElementById("modalEditar").classList.remove("hidden");
+            })
+            .catch(error => console.error("Erro ao carregar dados do usuário:", error));
     }
 
     document.getElementById("resetarSenha").addEventListener("click", () => {
@@ -302,20 +301,20 @@ document.addEventListener("DOMContentLoaded", async () => {
                 password: "12345678"
             })
         })
-        .then(response => {
-            if (!response.ok) {
-                throw new Error("Erro ao resetar a senha");
-            }
-            console.log("Senha resetada para 12345678");
-        })
-        .catch(error => console.error("Erro ao resetar a senha:", error));
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error("Erro ao resetar a senha");
+                }
+                console.log("Senha resetada para 12345678");
+            })
+            .catch(error => console.error("Erro ao resetar a senha:", error));
     });
 
     document.getElementById("salvarEdicao").addEventListener("click", async () => {
         const nome = document.getElementById("nomeUsuarioEditar").value;
         const email = document.getElementById("emailUsuarioEditar").value;
         const permissao = document.getElementById("permissaoUsuarioEditar").value;
-        const senha = "12345678"; 
+        const senha = "12345678";
 
         try {
             const response = await fetch(`http://127.0.0.1:3000/api/usuarios/${usuarioIdParaEditar}`, {
@@ -347,15 +346,31 @@ document.addEventListener("DOMContentLoaded", async () => {
         document.getElementById("modalEditar").classList.add("hidden");
     });
 
+    inputBuscaNome.addEventListener("input", () => {
+        const termo = inputBuscaNome.value.toLowerCase(); 
+        document.querySelectorAll("#usuarios tbody tr").forEach(row => { 
+            const nomeUsuario = row.cells[0].textContent.toLowerCase(); 
+            row.style.display = nomeUsuario.includes(termo) ? "" : "none"; 
+        });
+    });
     configurarModal();
     carregarUsuarios();
 });
 
-// Aplicações para a pagina de Newsletter
 document.addEventListener("DOMContentLoaded", async () => {
     const token = getCookie("access_token");
     const tabelaEmails = document.querySelector("#newsletter tbody");
     const inputBuscaEmail = document.getElementById("busca-email");
+    const modalExcluirEmail = document.getElementById("modalExcluirEmail");
+    const modalAddEmail = document.getElementById("modalAddEmail"); 
+    const confirmarExclusaoEmail = document.getElementById("confirmarExclusaoEmail");
+    const cancelarExclusaoEmail = document.getElementById("cancelarExclusaoEmail");
+    const confirmarAddEmail = document.getElementById("confirmarAddEmail"); 
+    const cancelarAddEmail = document.getElementById("cancelarAddEmail"); 
+    const inputEmailInserir = document.getElementById("emailInserir");
+    let idEmailToDelete = null;
+    const exportarDadosButton = document.getElementById("exportarDados");
+
 
     async function carregarEmails() {
         try {
@@ -366,44 +381,48 @@ document.addEventListener("DOMContentLoaded", async () => {
                     "Authorization": `Bearer ${token}`
                 }
             });
-    
+
             if (!response.ok) {
                 throw new Error(`Erro ao buscar e-mails: ${response.statusText}`);
             }
-    
-            const inscricoes = await response.json();
 
+            const inscricoes = await response.json();
             tabelaEmails.innerHTML = "";
-    
+
             inscricoes.forEach(inscricao => {
                 const tr = document.createElement("tr");
                 tr.classList.add("border-b");
-    
+
                 tr.innerHTML = `
                     <td class="py-3 px-4">${inscricao.email}</td>
                     <td class="py-3 px-4">${new Date().toLocaleDateString()}</td>
                     <td class="py-3 px-4 text-center">
-                        <span class="fas fa-trash-alt text-gray-600 cursor-pointer hover:text-red-500 excluir-email" data-id="${inscricao.id}"></span>
+                        <span class="fas fa-trash-alt text-gray-600 cursor-pointer hover:text-red-500 excluir-email" data-id="${inscricao.idInscricao}"></span>
                     </td>
                 `;
-    
+
                 tabelaEmails.appendChild(tr);
             });
-    
+
             document.querySelectorAll(".excluir-email").forEach(botao => {
-                botao.addEventListener("click", () => excluirEmail(botao.dataset.id));
+                botao.addEventListener("click", () => {
+                    idEmailToDelete = botao.dataset.id;
+                    modalExcluirEmail.classList.remove("hidden");
+                });
             });
-    
+
         } catch (error) {
             console.error("Erro ao carregar e-mails:", error);
         }
     }
 
-    async function excluirEmail(id) {
-        if (!confirm(`Tem certeza que deseja excluir a inscrição com ID: ${id}?`)) return;
+    async function excluirEmail() {
+        if (!idEmailToDelete) {
+            return;
+        }
 
         try {
-            const response = await fetch(`http://127.0.0.1:3000/api/inscricoes/${id}`, {
+            const response = await fetch(`http://127.0.0.1:3000/api/inscricoes/${idEmailToDelete}`, {
                 method: "DELETE",
                 headers: {
                     "Authorization": `Bearer ${token}`
@@ -414,13 +433,20 @@ document.addEventListener("DOMContentLoaded", async () => {
                 throw new Error("Erro ao excluir inscrição");
             }
 
-            alert("Inscrição excluída com sucesso!");
             carregarEmails();
         } catch (error) {
             console.error("Erro ao excluir inscrição:", error);
+        } finally {
+            modalExcluirEmail.classList.add("hidden"); 
         }
     }
-    
+
+    cancelarExclusaoEmail.addEventListener("click", () => {
+        modalExcluirEmail.classList.add("hidden");
+    });
+
+    confirmarExclusaoEmail.addEventListener("click", excluirEmail);
+
     inputBuscaEmail.addEventListener("input", () => {
         const termo = inputBuscaEmail.value.toLowerCase();
         document.querySelectorAll("#newsletter tbody tr").forEach(row => {
@@ -429,5 +455,91 @@ document.addEventListener("DOMContentLoaded", async () => {
         });
     });
 
-    carregarEmails(); // Carrega os e-mails ao abrir a página
+    async function adicionarEmail() {
+        const email = inputEmailInserir.value;
+        const dataCadastro = new Date().toISOString().split("T")[0];
+
+        const emailRegex = /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/;
+
+        if (!email || !emailRegex.test(email)) {
+            alert("Por favor, insira um e-mail válido.");
+            return;
+        }
+
+        try {
+            const response = await fetch("http://127.0.0.1:3000/api/inscricoes", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                },
+                body: JSON.stringify({ email, data_cadastro: dataCadastro })
+            });
+
+            if (!response.ok) {
+                throw new Error("Erro ao cadastrar inscrição");
+            }
+
+            const novoEmail = await response.json();
+            carregarEmails();
+            modalAddEmail.classList.add("hidden");
+        } catch (error) {
+            console.error("Erro ao cadastrar inscrição:", error);
+        }
+    }
+
+    document.getElementById("adicionarNovoEmail").addEventListener("click", () => {
+        modalAddEmail.classList.remove("hidden");
+    });
+
+    cancelarAddEmail.addEventListener("click", () => {
+        modalAddEmail.classList.add("hidden");
+    });
+
+
+    confirmarAddEmail.addEventListener("click", adicionarEmail);
+
+    exportarDadosButton.addEventListener("click", async () => {
+        try {
+
+            const response = await fetch("http://127.0.0.1:3000/api/inscricoes", {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${getCookie("access_token")}`
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error("Erro ao buscar e-mails");
+            }
+
+            const inscricoes = await response.json();
+
+            let csvContent = "Email\n";
+
+            inscricoes.forEach(inscricao => {
+                csvContent += `${inscricao.email}\n`;
+            });
+
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8;' });
+            const link = document.createElement("a");
+
+            if (navigator.msSaveBlob) {
+                navigator.msSaveBlob(blob, "emails.csv");
+            } else {
+                const url = URL.createObjectURL(blob);
+                link.setAttribute("href", url);
+                link.setAttribute("download", "emails.csv");
+                link.click();
+                URL.revokeObjectURL(url);
+            }
+        } catch (error) {
+            console.error("Erro ao exportar dados:", error);
+        }
+    });
+
+    carregarEmails();
 });
+
+
