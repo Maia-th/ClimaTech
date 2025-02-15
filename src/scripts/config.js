@@ -6,6 +6,7 @@ function getCookie(name) {
     return null;
 }
 
+//Obtem o token do Cookie, decodifica, preenche a pag com os dados do usuario...
 document.addEventListener('DOMContentLoaded', async () => {
     const token = getCookie('access_token');
 
@@ -131,10 +132,10 @@ async function showModal(modalPath) {
     }
 }
 
+//pagina de usuarios
 document.addEventListener("DOMContentLoaded", async () => {
     const token = getCookie("access_token");
     const tabelaUsuarios = document.querySelector("#usuarios tbody");
-    const inputBuscaNome = document.getElementById("busca-nome");
 
     let usuarioIdParaExcluir = null;
     let usuarioIdParaEditar = null;
@@ -346,13 +347,6 @@ document.addEventListener("DOMContentLoaded", async () => {
         document.getElementById("modalEditar").classList.add("hidden");
     });
 
-    inputBuscaNome.addEventListener("input", () => {
-        const termo = inputBuscaNome.value.toLowerCase(); 
-        document.querySelectorAll("#usuarios tbody tr").forEach(row => { 
-            const nomeUsuario = row.cells[0].textContent.toLowerCase(); 
-            row.style.display = nomeUsuario.includes(termo) ? "" : "none"; 
-        });
-    });
     configurarModal();
     carregarUsuarios();
 });
@@ -362,11 +356,11 @@ document.addEventListener("DOMContentLoaded", async () => {
     const tabelaEmails = document.querySelector("#newsletter tbody");
     const inputBuscaEmail = document.getElementById("busca-email");
     const modalExcluirEmail = document.getElementById("modalExcluirEmail");
-    const modalAddEmail = document.getElementById("modalAddEmail"); 
+    const modalAddEmail = document.getElementById("modalAddEmail");
     const confirmarExclusaoEmail = document.getElementById("confirmarExclusaoEmail");
     const cancelarExclusaoEmail = document.getElementById("cancelarExclusaoEmail");
-    const confirmarAddEmail = document.getElementById("confirmarAddEmail"); 
-    const cancelarAddEmail = document.getElementById("cancelarAddEmail"); 
+    const confirmarAddEmail = document.getElementById("confirmarAddEmail");
+    const cancelarAddEmail = document.getElementById("cancelarAddEmail");
     const inputEmailInserir = document.getElementById("emailInserir");
     let idEmailToDelete = null;
     const exportarDadosButton = document.getElementById("exportarDados");
@@ -437,7 +431,7 @@ document.addEventListener("DOMContentLoaded", async () => {
         } catch (error) {
             console.error("Erro ao excluir inscrição:", error);
         } finally {
-            modalExcluirEmail.classList.add("hidden"); 
+            modalExcluirEmail.classList.add("hidden");
         }
     }
 
