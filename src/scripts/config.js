@@ -132,7 +132,7 @@ async function showModal(modalPath) {
     }
 }
 
-//pagina de usuarios
+// aplicação da pagina de usuarios
 document.addEventListener("DOMContentLoaded", async () => {
     const token = getCookie("access_token");
     const tabelaUsuarios = document.querySelector("#usuarios tbody");
@@ -349,4 +349,85 @@ document.addEventListener("DOMContentLoaded", async () => {
 
     configurarModal();
     carregarUsuarios();
+});
+
+// Aplicações para a pagina de Newsletter
+document.addEventListener("DOMContentLoaded", async () => {
+    const token = getCookie("access_token");
+    const tabelaEmails = document.querySelector("#newsletter tbody");
+    const inputBuscaEmail = document.getElementById("busca-email");
+
+    async function carregarEmails() {
+        try {
+            const response = await fetch("http://127.0.0.1:3000/api/inscricoes", {
+                method: "GET",
+                headers: {
+                    "Content-Type": "application/json",
+                    "Authorization": `Bearer ${token}`
+                }
+            });
+    
+            if (!response.ok) {
+                throw new Error(`Erro ao buscar e-mails: ${response.statusText}`);
+            }
+    
+            const inscricoes = await response.json();
+
+            tabelaEmails.innerHTML = "";
+    
+            inscricoes.forEach(inscricao => {
+                const tr = document.createElement("tr");
+                tr.classList.add("border-b");
+    
+                tr.innerHTML = `
+                    <td class="py-3 px-4">${inscricao.email}</td>
+                    <td class="py-3 px-4">${new Date().toLocaleDateString()}</td>
+                    <td class="py-3 px-4 text-center">
+                        <span class="fas fa-trash-alt text-gray-600 cursor-pointer hover:text-red-500 excluir-email" data-id="${inscricao.id}"></span>
+                    </td>
+                `;
+    
+                tabelaEmails.appendChild(tr);
+            });
+    
+            document.querySelectorAll(".excluir-email").forEach(botao => {
+                botao.addEventListener("click", () => excluirEmail(botao.dataset.id));
+            });
+    
+        } catch (error) {
+            console.error("Erro ao carregar e-mails:", error);
+        }
+    }
+
+    async function excluirEmail(id) {
+        if (!confirm(`Tem certeza que deseja excluir a inscrição com ID: ${id}?`)) return;
+
+        try {
+            const response = await fetch(`http://127.0.0.1:3000/api/inscricoes/${id}`, {
+                method: "DELETE",
+                headers: {
+                    "Authorization": `Bearer ${token}`
+                }
+            });
+
+            if (!response.ok) {
+                throw new Error("Erro ao excluir inscrição");
+            }
+
+            alert("Inscrição excluída com sucesso!");
+            carregarEmails();
+        } catch (error) {
+            console.error("Erro ao excluir inscrição:", error);
+        }
+    }
+    
+    inputBuscaEmail.addEventListener("input", () => {
+        const termo = inputBuscaEmail.value.toLowerCase();
+        document.querySelectorAll("#newsletter tbody tr").forEach(row => {
+            const email = row.cells[0].textContent.toLowerCase();
+            row.style.display = email.includes(termo) ? "" : "none";
+        });
+    });
+
+    carregarEmails(); // Carrega os e-mails ao abrir a página
 });
