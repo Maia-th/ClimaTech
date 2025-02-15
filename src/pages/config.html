@@ -59,6 +59,7 @@
     </header>
 
     <main class="container flex-1 p-7 flex justify-center items-center transition-all duration-300 ease-in-out">
+        <!-- Div para apresentação e edição dos dados pessoais do usuarios -->
         <div id="dados-pessoais" class="form-container bg-white p-5 rounded-sm shadow-md w-full max-h-full">
             <h2 class="text-2xl font-bold">Editar Dados Pessoais</h2>
             <hr class="border-0 border-t my-1 mb-5 mx-auto">
@@ -92,7 +93,7 @@
                 </div>
             </form>
         </div>
-
+ <!-- Div para apresentação e edição de todos os usuarios do banco -->
         <div id="usuarios" class="bg-white p-5 rounded-sm shadow-md w-full max-h-full hidden">
             <h2 class="text-2xl font-bold">Usuários Cadastrados</h2>
             <hr class="border-t my-2 mb-5">
@@ -126,7 +127,7 @@
             </table>
         </div>
 
-
+<!-- Div para apresentação e edição de email cadastrados no banco -->
         <div id="newsletter" class="form-container bg-white p-5 rounded-sm shadow-md w-full max-h-full hidden">
             <h2 class="text-2xl font-bold">E-mails Cadastrados</h2>
             <hr class="border-0 border-t my-1 mb-5 mx-auto">
@@ -141,15 +142,25 @@
                 </div>
 
                 <div class="form-actions mb-5" style="display: flex; gap: 10px; align-items: center;">
-                    <button type="submit" class="confirm px-8 py-2.5 border-0 ml-5 rounded-md text-sm cursor-pointer"
+                    <button id="exportarDados" type="submit" class="confirm px-8 py-2.5 border-0 ml-5 rounded-md text-sm cursor-pointer"
                         style="height: 40px;">Exportar</button>
-                    <button type="button" class="cancel px-8 py-2.5 border-0 rounded-md text-sm cursor-pointer"
+                    <button id="adicionarNovoEmail" type="button" class="cancel px-8 py-2.5 border-0 rounded-md text-sm cursor-pointer"
                         style="height: 40px;">Adicionar Novo</button>
                 </div>
             </div>
 
-            <div>
-            </div>
+            <table class="w-full border-collapse">
+                <thead>
+                    <tr class="text-left border-b">
+                        <th class="py-3 px-4">E-mail</th>
+                        <th class="py-3 px-4">Data de Cadastro</th>
+                        <th class="py-3 px-4 text-center">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Dados do Bd carregados aqui -->
+                </tbody>
+            </table>
         </div>
 
     </main>
@@ -249,7 +260,39 @@
     </div>
 </div>
 
+<!-- modal de Excluir email-->
+<div id="modalExcluirEmail" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+    <div class="bg-white p-6 rounded-lg shadow-lg w-96 text-center">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <div
+            class="w-16 h-16 mx-auto flex items-center justify-center rounded-full border-4 text-3xl font-bold exclamation-container mb-5">
+            <i class="fas fa-exclamation gblaranja"></i>
+        </div>
 
+        <h2 class="text-xl font-bold">Deseja excluir esse E-mail?</h2>
+        <p class="text-sm text-gray-500 mt-2">Essa ação não pode ser desfeita.</p>
+        <div class="mt-4 flex justify-center space-x-4">
+            <button id="cancelarExclusaoEmail" class="px-4 py-2 bgAzul text-white rounded-md">Cancelar</button>
+            <button id="confirmarExclusaoEmail" class="px-4 py-2 bgLaranja rounded-md">Confirmar</button>
+        </div>
+    </div>
+</div>
+
+<!-- modal de adicionar um novo email-->
+<div id="modalAddEmail" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+    <div class="bg-white p-6 rounded-lg shadow-lg w-96 text-center">
+        <h2 class="text-2xl font-bold mb-4">Digite o novo e-mail para cadastro:</h2>
+        
+        <div class="mb-4">
+            <label for="emailInserir" class="block text-sm font-medium text-gray-700">E-mail</label>
+            <input type="text" id="emailInserir" class="w-full p-2 border border-gray-300 rounded-md" placeholder="" />
+        </div>
+        <div class="mt-4 flex justify-center space-x-4">
+            <button id="cancelarAddEmail" class="px-4 py-2 bgAzul text-white rounded-md">Cancelar</button>
+            <button id="confirmarAddEmail" class="px-4 py-2 bgLaranja rounded-md">Salvar</button>
+        </div>
+    </div>
+</div>
 
 </body>
 
