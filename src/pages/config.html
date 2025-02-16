@@ -10,7 +10,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/jwt-decode@3.1.2/build/jwt-decode.min.js"></script>
 
-    <script type="module" src="../scripts/formsConfig.js"></script>
+    <script src="../scripts/formsConfig.js"></script>
     <script src="../scripts/menuConfig.js"></script>
     <script type="module" src="../scripts/auth.js"></script>
     <script type="module" src="../scripts/config.js"></script>
@@ -20,9 +20,11 @@
     <link rel="stylesheet" href="../styles/config.css">
 </head>
 
-<body class="font-sans flex h-screen bg-cover bg-center bg-fixed" style="background-image: url('../assets/images/fundos.png');">
+<body class="font-sans flex h-screen bg-cover bg-center bg-fixed"
+    style="background-image: url('../assets/images/fundos.png');">
     <header class="h-screen z-50 relative border-0 shadow-none">
-        <button class="hamburger block text-2xl bg-none border-0 text-white cursor-pointer fixed top-8 left-6" onclick="toggleMenu()">
+        <button class="hamburger block text-2xl bg-none border-0 text-white cursor-pointer fixed top-8 left-6"
+            onclick="toggleMenu()">
             <i class="fas fa-bars"></i>
         </button>
         <nav class="top-0 left-0 pt-0 h-full w-150 z-[1000]">
@@ -32,27 +34,33 @@
                     <img src="../assets/icons/favicon.png" alt="ClimaTech Logo" class="mr-1">
                     <span class="text-white text-2xl font-semibold">ClimaTech</span>
                 </div>
-                <a href="dashboard.html" class="flex items-center text-white no-underline my-2 text-base px-5 py-2.5 rounded-md transition-colors duration-300 cursor-pointer">
+                <a href="dashboard.html"
+                    class="flex items-center text-white no-underline my-2 text-base px-5 py-2.5 rounded-md transition-colors duration-300 cursor-pointer">
                     <i class="fas fa-home"></i> Dashboard
                 </a>
-                <button onclick="showForm('dados-pessoais'); selectMenuItem()" class="flex items-center text-white my-2 text-base px-5 py-2.5 rounded-md transition-colors duration-300 cursor-pointer">
+                <button onclick="showForm('dados-pessoais'); selectMenuItem()"
+                    class="flex items-center text-white my-2 text-base px-5 py-2.5 rounded-md transition-colors duration-300 cursor-pointer">
                     <i class="fas fa-user"></i> Dados Pessoais
                 </button>
-                <button onclick="showForm('usuarios'); selectMenuItem()" class="flex items-center text-white my-2 text-base px-5 py-2.5 rounded-md transition-colors duration-300 cursor-pointer">
+                <button onclick="showForm('usuarios'); selectMenuItem()"
+                    class="flex items-center text-white my-2 text-base px-5 py-2.5 rounded-md transition-colors duration-300 cursor-pointer">
                     <i class="fas fa-users"></i> Usuários
                 </button>
-                <button onclick="showForm('newsletter'); selectMenuItem()" class="flex items-center text-white my-2 text-base px-5 py-2.5 rounded-md transition-colors duration-300 cursor-pointer">
+                <button onclick="showForm('newsletter'); selectMenuItem()"
+                    class="flex items-center text-white my-2 text-base px-5 py-2.5 rounded-md transition-colors duration-300 cursor-pointer">
                     <i class="fas fa-envelope"></i> Newsletter
                 </button>
-                <a href="../../index.html" id="sair" class="flex items-center text-white no-underline mt-auto text-base px-5 py-2.5 rounded-md transition-colors duration-300 cursor-pointer">
+                <a href="../../index.html" id="sair"
+                    class="flex items-center text-white no-underline mt-auto text-base px-5 py-2.5 rounded-md transition-colors duration-300 cursor-pointer">
                     <i class="fas fa-sign-out-alt"></i> Sair
-                  </a>
+                </a>
             </div>
         </nav>
     </header>
 
     <main class="container flex-1 p-7 flex justify-center items-center transition-all duration-300 ease-in-out">
-        <div id="dados-pessoais"  class="form-container bg-white p-5 rounded-sm shadow-md w-full max-h-full">
+        <!-- Div para apresentação e edição dos dados pessoais do usuarios -->
+        <div id="dados-pessoais" class="form-container bg-white p-5 rounded-sm shadow-md w-full max-h-full">
             <h2 class="text-2xl font-bold">Editar Dados Pessoais</h2>
             <hr class="border-0 border-t my-1 mb-5 mx-auto">
 
@@ -78,55 +86,213 @@
                     <input type="password" id="confirm-password" placeholder="Repita a nova senha">
                 </div>
                 <div class="form-actions mb-5 flex justify-end gap-8">
-                    <button type="button" class="cancel px-8 py-2.5 border-0 rounded-md text-sm cursor-pointer">Cancelar</button>
-                    <button type="submit" class="confirm px-8 py-2.5 border-0 rounded-md text-sm cursor-pointer" >Confirmar</button>
+                    <button type="button"
+                        class="cancel px-8 py-2.5 border-0 rounded-md text-sm cursor-pointer">Cancelar</button>
+                    <button type="submit"
+                        class="confirm px-8 py-2.5 border-0 rounded-md text-sm cursor-pointer">Confirmar</button>
                 </div>
             </form>
         </div>
-
-        <div id="usuarios" class="form-container bg-white p-5 rounded-sm shadow-md w-full max-h-full hidden">
+ <!-- Div para apresentação e edição de todos os usuarios do banco -->
+        <div id="usuarios" class="bg-white p-5 rounded-sm shadow-md w-full max-h-full hidden">
             <h2 class="text-2xl font-bold">Usuários Cadastrados</h2>
-            <hr class="border-0 border-t my-1 mb-5 mx-auto">
+            <hr class="border-t my-2 mb-5">
 
-            <div style="display: flex; align-items: center; width: 100%; justify-content: space-between;">
-
-                <div class="form-group mb-5" style="position: relative; flex-grow: 1;">
-                    <input type="text" id="busca-nome" placeholder="Busque por nome." style="padding-right: 30px; width: 100%;">
-                    <span class="fas fa-search" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></span>
+            <div class="flex items-center justify-between w-full mb-5">
+                <div class="relative flex-grow">
+                    <input type="text" id="busca-nome" placeholder="Busque por nome"
+                        class="w-full border border-gray-300 rounded-md px-4 py-2 pr-10 focus:outline-none focus:ring-1 focus:ring-gray-400">
+                    <span
+                        class="fas fa-search absolute right-3 top-1/2 transform -translate-y-1/2 text-gray-400 cursor-pointer"></span>
                 </div>
-            
-                <div class="form-actions mb-5">
-                    <button type="button" class="cancel px-8 py-2.5 ml-5 rounded-md text-sm cursor-pointer">Adicionar novo</button>
-                </div>
-            </div>
-            
-            <div>
 
+                <button type="button" class="ml-5 adicionar px-8 py-2.5 border-0 rounded-md text-sm cursor-pointer"
+                    style="height: 40px;">
+                    Adicionar novo
+                </button>
             </div>
+
+            <table class="w-full border-collapse">
+                <thead>
+                    <tr class="text-left border-b">
+                        <th class="py-3 px-4">Nome</th>
+                        <th class="py-3 px-4">E-mail</th>
+                        <th class="py-3 px-4">Permissão</th>
+                        <th class="py-3 px-4 text-center">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Dados do Bd carregados aqui -->
+                </tbody>
+            </table>
         </div>
 
+<!-- Div para apresentação e edição de email cadastrados no banco -->
         <div id="newsletter" class="form-container bg-white p-5 rounded-sm shadow-md w-full max-h-full hidden">
             <h2 class="text-2xl font-bold">E-mails Cadastrados</h2>
             <hr class="border-0 border-t my-1 mb-5 mx-auto">
-        
+
             <div style="display: flex; align-items: center; width: 100%; justify-content: space-between;">
 
                 <div class="form-group mb-5" style="position: relative; flex-grow: 1;">
-                    <input type="text" id="busca-email" placeholder="Busque por e-mail." style="padding-right: 30px; width: 100%; height: 40px;">
-                    <span class="fas fa-search" style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></span>
+                    <input type="text" id="busca-email" placeholder="Busque por e-mail."
+                        style="padding-right: 30px; width: 100%; height: 40px;">
+                    <span class="fas fa-search"
+                        style="position: absolute; right: 10px; top: 50%; transform: translateY(-50%); cursor: pointer;"></span>
                 </div>
 
                 <div class="form-actions mb-5" style="display: flex; gap: 10px; align-items: center;">
-                    <button type="submit" class="confirm px-8 py-2.5 border-0 ml-5 rounded-md text-sm cursor-pointer" style="height: 40px;">Exportar</button>
-                    <button type="button" class="cancel px-8 py-2.5 border-0 rounded-md text-sm cursor-pointer" style="height: 40px;">Adicionar Novo</button>
+                    <button id="exportarDados" type="submit" class="confirm px-8 py-2.5 border-0 ml-5 rounded-md text-sm cursor-pointer"
+                        style="height: 40px;">Exportar</button>
+                    <button id="adicionarNovoEmail" type="button" class="cancel px-8 py-2.5 border-0 rounded-md text-sm cursor-pointer"
+                        style="height: 40px;">Adicionar Novo</button>
                 </div>
             </div>
-        
-            <div>
+
+            <table class="w-full border-collapse">
+                <thead>
+                    <tr class="text-left border-b">
+                        <th class="py-3 px-4">E-mail</th>
+                        <th class="py-3 px-4">Data de Cadastro</th>
+                        <th class="py-3 px-4 text-center">Ações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Dados do Bd carregados aqui -->
+                </tbody>
+            </table>
+        </div>
+
+    </main>
+
+    <!-- modal de Excluir -->
+    <div id="modalExcluir" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+        <div class="bg-white p-6 rounded-lg shadow-lg w-96 text-center">
+            <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+            <div
+                class="w-16 h-16 mx-auto flex items-center justify-center rounded-full border-4 text-3xl font-bold exclamation-container mb-5">
+                <i class="fas fa-exclamation gblaranja"></i>
+            </div>
+
+            <h2 class="text-xl font-bold">Deseja excluir esse Usuário?</h2>
+            <p class="text-sm text-gray-500 mt-2">Essa ação não pode ser desfeita.</p>
+            <div class="mt-4 flex justify-center space-x-4">
+                <button id="cancelarExclusao" class="px-4 py-2 bgAzul text-white rounded-md">Cancelar</button>
+                <button id="confirmarExclusao" class="px-4 py-2 bgLaranja rounded-md">Confirmar</button>
             </div>
         </div>
+    </div>
+
+    <!-- Modal de Cadastro -->
+    <div id="modalCadastro" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+        <div class="bg-white p-6 rounded-lg shadow-lg w-96">
+
+            <h2 class="text-xl font-bold text-center">Digite os dados de Cadastro:</h2>
+
+            <div class="mt-4">
+                <div class="mb-4">
+                    <label for="nomeUsuario" class="block text-sm font-medium">Nome de Usuário</label>
+                    <input type="text" id="nomeUsuario" class="w-full border border-gray-300 rounded-md p-2 mt-1"
+                        placeholder="Digite o nome">
+                </div>
+
+                <div class="mb-4">
+                    <label for="emailUsuario" class="block text-sm font-medium">E-mail</label>
+                    <input type="email" id="emailUsuario" class="w-full border border-gray-300 rounded-md p-2 mt-1"
+                        placeholder="Digite o e-mail">
+                </div>
+
+                <div class="mb-4">
+                    <label for="senhaUsuario" class="block text-sm font-medium">Senha (Padrão: 12345678)</label>
+                    <input type="password" id="senhaUsuario" class="w-full border border-gray-300 rounded-md p-2 mt-1"
+                        placeholder="Digite a senha">
+                </div>
+                
+                <div class="mb-4">
+                    <label for="permissaoUsuario" class="block text-sm font-medium text-gray-700">Permissão</label>
+                    <select id="permissaoUsuario" class="w-full p-2 border border-gray-300 rounded-md">
+                        <option value="root">Root</option>
+                        <option value="padrao">Padrão</option>
+                    </select>
+                </div>
+
+                <div class="flex justify-center space-x-4 mt-6">
+                    <button id="cancelarCadastro" class="px-4 py-2 bgAzul text-white rounded-md">Cancelar</button>
+                    <button id="cadastrarUsuario"
+                        class="px-4 py-2 bgLaranja text-white rounded-md">Cadastrar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal de Edição de Usuário -->
+<div id="modalEditar" class="hidden fixed inset-0 z-50 flex items-center justify-center bg-gray-800 bg-opacity-50">
+    <div class="bg-white p-6 rounded-lg w-96">
+        <h2 class="text-2xl font-bold mb-4">Digite os dados de Cadastro:</h2>
         
-    </main>
+        <div class="mb-4">
+            <label for="nomeUsuarioEditar" class="block text-sm font-medium text-gray-700">Nome de Usuário</label>
+            <input type="text" id="nomeUsuarioEditar" class="w-full p-2 border border-gray-300 rounded-md" placeholder="Nome" />
+        </div>
+
+        <div class="mb-4">
+            <label for="emailUsuarioEditar" class="block text-sm font-medium text-gray-700">E-mail</label>
+            <input type="email" id="emailUsuarioEditar" class="w-full p-2 border border-gray-300 rounded-md" placeholder="E-mail" />
+        </div>
+
+        <div class="mb-4 flex justify-between">
+            <span class="text-sm font-medium text-gray-700">Senha</span>
+            <button id="resetarSenha" class="text-sm bgLaranja py-2 px-4 rounded-md">Resetar</button>
+        </div>
+
+        <div class="mb-4">
+            <label for="permissaoUsuarioEditar" class="block text-sm font-medium text-gray-700">Permissão</label>
+            <select id="permissaoUsuarioEditar" class="w-full p-2 border border-gray-300 rounded-md">
+                <option value="root">Root</option>
+                <option value="padrao">Padrão</option>
+            </select>
+        </div>
+
+        <div class="flex justify-center space-x-4 mt-6">
+            <button id="cancelarEdicao" class="bgAzul text-white py-2 px-4 rounded-md">Cancelar</button>
+            <button id="salvarEdicao" class="bgLaranja text-white py-2 px-4 rounded-md">Salvar</button>
+        </div>
+    </div>
+</div>
+
+<!-- modal de Excluir email-->
+<div id="modalExcluirEmail" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+    <div class="bg-white p-6 rounded-lg shadow-lg w-96 text-center">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+        <div
+            class="w-16 h-16 mx-auto flex items-center justify-center rounded-full border-4 text-3xl font-bold exclamation-container mb-5">
+            <i class="fas fa-exclamation gblaranja"></i>
+        </div>
+
+        <h2 class="text-xl font-bold">Deseja excluir esse E-mail?</h2>
+        <p class="text-sm text-gray-500 mt-2">Essa ação não pode ser desfeita.</p>
+        <div class="mt-4 flex justify-center space-x-4">
+            <button id="cancelarExclusaoEmail" class="px-4 py-2 bgAzul text-white rounded-md">Cancelar</button>
+            <button id="confirmarExclusaoEmail" class="px-4 py-2 bgLaranja rounded-md">Confirmar</button>
+        </div>
+    </div>
+</div>
+
+<!-- modal de adicionar um novo email-->
+<div id="modalAddEmail" class="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 hidden">
+    <div class="bg-white p-6 rounded-lg shadow-lg w-96 text-center">
+        <h2 class="text-2xl font-bold mb-4">Digite o novo e-mail para cadastro:</h2>
+        
+        <div class="mb-4">
+            <label for="emailInserir" class="block text-sm font-medium text-gray-700">E-mail</label>
+            <input type="text" id="emailInserir" class="w-full p-2 border border-gray-300 rounded-md" placeholder="" />
+        </div>
+        <div class="mt-4 flex justify-center space-x-4">
+            <button id="cancelarAddEmail" class="px-4 py-2 bgAzul text-white rounded-md">Cancelar</button>
+            <button id="confirmarAddEmail" class="px-4 py-2 bgLaranja rounded-md">Salvar</button>
+        </div>
+    </div>
+</div>
 
 </body>
 

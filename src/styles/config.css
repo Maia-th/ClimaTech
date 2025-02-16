@@ -51,22 +51,30 @@ hr {
   font-size: 0.8rem;
 }
 
-.form-actions .cancel {
+.cancel, .adicionar, .bgLaranja{
   background-color: #F59E0B;
   color: white;
 }
 
-.form-actions .cancel:hover {
+.textLaranja {
+  color: #F59E0B;
+}
+
+.cancel:hover, .adicionar:hover, .bgLaranja:hover{
   background-color: #e6950b;
 }
 
-.form-actions .confirm {
+.confirm, .bgAzul{
   background-color: #34495e;
   color: white;
 }
 
-.form-actions .confirm:hover {
+.confirm:hover, .bgAzul:hover {
   background-color: #243342;
+}
+
+.textAzul {
+  color: #34495e;
 }
 
 nav button:hover {
@@ -91,3 +99,8 @@ nav button:hover {
 .hidden {
   display: none;
 } 
+
+.exclamation-container {
+  border: 4px solid #F59E0B; 
+  color: #F59E0B;
+}
